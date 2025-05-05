@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades - Senac</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <script src="main.js" defer></script>
+    <!-- Favicon -->
+<link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMd1AAFcDfnAJUooKdc4EzujsY7Y4y3xd5ZQ&s" type="image/png">
+<link rel="apple-touch-icon" href="img/SIGA LOGO.png">
+</head>
+<body>
+    <!-- Barra de navegação (mesma do index.html) -->
+    <nav>
+        <img src="img/SIGA LOGO.png" alt="Senac Logo" onclick="navigateTo('index.html')">
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Cursos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Bolsas de estudo</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('bolsas.html', 'prouni')">ProUni</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'fies')">FIES</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'bolsa-social')">Bolsa Social</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Descontos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('descontos.html', 'convenios')">Convênios</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'promocoes')">Promoções</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'ex-alunos')">Ex-alunos</a>
+                </div>
+            </div>
+            <a href="#" onclick="navigateTo('eventos.html')">Eventos</a>
+            <a href="#" onclick="navigateTo('unidades.html')">Unidades</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Para empresas</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('empresas.html', 'in-company')">Cursos In Company</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'parcerias')">Parcerias</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'estagio')">Programa de Estágio</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">O Senac</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('sobre.html', 'historia')">História</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'missao')">Missão e Valores</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'estrutura')">Estrutura</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Serviços</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'atendimento')">Atendimento</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a>
+                </div>
+            </div>
+            <input type="text" placeholder="Buscar" id="search-input">
+            <button onclick="openLoginModal()">Login / Área Exclusiva</button>
+        </div>
+    </nav>
+    
+    <!-- Modal de Login (mesmo do index.html) -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <h2>Login / Área Exclusiva</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </div>
+                <button type="submit" class="login-button">Entrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Não tem uma conta? <a href="#" onclick="showRegistrationForm()">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Formulário de Cadastro (mesmo do index.html) -->
+    <div id="registration-form" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+            <h2>Cadastre-se</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-name">Nome Completo</label>
+                    <input type="text" id="reg-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-cpf">CPF</label>
+                    <input type="text" id="reg-cpf" name="cpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-phone">Telefone</label>
+                    <input type="tel" id="reg-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Senha</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirmar Senha</label>
+                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
+                </div>
+                <div class="form-options">
+                    <div class="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                    </div>
+                </div>
+                <button type="submit" class="register-button">Cadastrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Conteúdo da página de unidades -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1>Nossas Unidades</h1>
+            <p>Conheça os campi do Senac e encontre a unidade mais próxima de você</p>
+        </div>
+    </div>
+    
+    <div class="page-content">
+        <!-- Mapa interativo -->
+        <div class="map-section">
+            <h2>Encontre uma unidade</h2>
+            <div class="map-container">
+                <img src="/placeholder.svg?height=500&width=1000" alt="Mapa de Unidades" class="map-image">
+                <!-- Em um site real, aqui seria implementado um mapa interativo com Google Maps ou similar -->
+            </div>
+            
+            <div class="map-search">
+                <div class="search-box">
+                    <input type="text" placeholder="Digite seu CEP ou cidade" id="location-search">
+                    <button class="search-button">Buscar</button>
+                </div>
+                <div class="filter-options">
+                    <label><input type="checkbox" checked> Graduação</label>
+                    <label><input type="checkbox" checked> Pós-Graduação</label>
+                    <label><input type="checkbox" checked> Técnicos</label>
+                    <label><input type="checkbox" checked> Livres</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lista de unidades -->
+        <div class="units-list">
+            <h2>Principais Unidades</h2>
+            
+            <!-- Unidade 1 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Senac Lapa Scipião">
+                </div>
+                <div class="unit-info">
+                    <h3>Senac Lapa Scipião</h3>
+                    <p class="unit-address">Rua Scipião, 67 - Lapa<br>São Paulo/SP - CEP: 05047-060</p>
+                    <div class="unit-contact">
+                        <p><strong>Telefone:</strong> (11) 2888-5500</p>
+                        <p><strong>E-mail:</strong> lapa@sp.senac.br</p>
+                    </div>
+                    <div class="unit-courses">
+                        <h4>Cursos oferecidos:</h4>
+                        <div class="course-tags">
+                            <span class="course-tag">Graduação</span>
+                            <span class="course-tag">Pós-Graduação</span>
+                            <span class="course-tag">Técnicos</span>
+                            <span class="course-tag">Livres</span>
+                        </div>
+                    </div>
+                    <div class="unit-hours">
+                        <h4>Horário de funcionamento:</h4>
+                        <p>Segunda a sexta: 8h às 21h<br>Sábados: 8h às 14h</p>
+                    </div>
+                    <div class="unit-actions">
+                        <button class="secondary-button" onclick="window.open('https://maps.google.com', '_blank')">Como chegar</button>
+                        <button class="cta-button" onclick="navigateTo('cursos.html', 'lapa')">Ver cursos</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unidade 2 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Senac Santo Amaro">
+                </div>
+                <div class="unit-info">
+                    <h3>Senac Santo Amaro</h3>
+                    <p class="unit-address">Av. Engenheiro Eusébio Stevaux, 823 - Santo Amaro<br>São Paulo/SP - CEP: 04696-000</p>
+                    <div class="unit-contact">
+                        <p><strong>Telefone:</strong> (11) 5682-7300</p>
+                        <p><strong>E-mail:</strong> santoamaro@sp.senac.br</p>
+                    </div>
+                    <div class="unit-courses">
+                        <h4>Cursos oferecidos:</h4>
+                        <div class="course-tags">
+                            <span class="course-tag">Graduação</span>
+                            <span class="course-tag">Pós-Graduação</span>
+                            <span class="course-tag">Técnicos</span>
+                            <span class="course-tag">Livres</span>
+                        </div>
+                    </div>
+                    <div class="unit-hours">
+                        <h4>Horário de funcionamento:</h4>
+                        <p>Segunda a sexta: 7h às 22h<br>Sábados: 8h às 15h</p>
+                    </div>
+                    <div class="unit-actions">
+                        <button class="secondary-button" onclick="window.open('https://maps.google.com', '_blank')">Como chegar</button>
+                        <button class="cta-button" onclick="navigateTo('cursos.html', 'santo-amaro')">Ver cursos</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unidade 3 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Senac Aclimação">
+                </div>
+                <div class="unit-info">
+                    <h3>Senac Aclimação</h3>
+                    <p class="unit-address">Rua Pires da Mota, 838 - Aclimação<br>São Paulo/SP - CEP: 01529-000</p>
+                    <div class="unit-contact">
+                        <p><strong>Telefone:</strong> (11) 3795-1499</p>
+                        <p><strong>E-mail:</strong> aclimacao@sp.senac.br</p>
+                    </div>
+                    <div class="unit-courses">
+                        <h4>Cursos oferecidos:</h4>
+                        <div class="course-tags">
+                            <span class="course-tag">Técnicos</span>
+                            <span class="course-tag">Livres</span>
+                        </div>
+                    </div>
+                    <div class="unit-hours">
+                        <h4>Horário de funcionamento:</h4>
+                        <p>Segunda a sexta: 8h às 21h<br>Sábados: 8h às 14h</p>
+                    </div>
+                    <div class="unit-actions">
+                        <button class="secondary-button" onclick="window.open('https://maps.google.com', '_blank')">Como chegar</button>
+                        <button class="cta-button" onclick="navigateTo('cursos.html', 'aclimacao')">Ver cursos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seção de tour virtual -->
+        <div class="virtual-tour">
+            <h2>Tour Virtual</h2>
+            <p>Conheça nossas instalações sem sair de casa. Faça um tour virtual por nossas principais unidades.</p>
+            
+            <div class="tour-options">
+                <div class="tour-option">
+                    <img src="/placeholder.svg?height=150&width=250" alt="Tour Lapa Scipião">
+                    <h3>Senac Lapa Scipião</h3>
+                    <button class="secondary-button" onclick="showNotification('Tour virtual em desenvolvimento')">Iniciar Tour</button>
+                </div>
+                <div class="tour-option">
+                    <img src="/placeholder.svg?height=150&width=250" alt="Tour Santo Amaro">
+                    <h3>Senac Santo Amaro</h3>
+                    <button class="secondary-button" onclick="showNotification('Tour virtual em desenvolvimento')">Iniciar Tour</button>
+                </div>
+                <div class="tour-option">
+                    <img src="/placeholder.svg?height=150&width=250" alt="Tour Aclimação">
+                    <h3>Senac Aclimação</h3>
+                    <button class="secondary-button" onclick="showNotification('Tour virtual em desenvolvimento')">Iniciar Tour</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé (mesmo do index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('sobre.html')">Sobre o Senac</a></li>
+                    <li><a href="#" onclick="navigateTo('trabalhe-conosco.html')">Trabalhe Conosco</a></li>
+                    <li><a href="#" onclick="navigateTo('responsabilidade-social.html')">Responsabilidade Social</a></li>
+                    <li><a href="#" onclick="navigateTo('noticias.html')">Notícias</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Cursos</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a></li>
+                    <li><a href="#" onclick="openLoginModal()">Portal do Aluno</a></li>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a></li>
+                    <li><a href="#" onclick="navigateTo('bolsas.html')">Bolsas e Financiamentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Central de Atendimento: 0800 883 2000</li>
+                    <li>atendimento@sp.senac.br</li>
+                    <li>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">FB</a>
+                            <a href="#" class="social-icon">IG</a>
+                            <a href="#" class="social-icon">YT</a>
+                            <a href="#" class="social-icon">LI</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Senac SP - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Mensagem de notificação -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <span class="close-notification" onclick="closeNotification()">&times;</span>
+    </div>
+</body>
+</html>
+

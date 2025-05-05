@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Curso - Senac</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="detalhes-curso.css">
+  <script src="main.js" defer></script>
+  <!-- Favicon -->
+<link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMd1AAFcDfnAJUooKdc4EzujsY7Y4y3xd5ZQ&s" type="image/png">
+<link rel="apple-touch-icon" href="img/SIGA LOGO.png" type="image/png">
+</head>
+<body>
+  <!-- Barra de navegação (mesma do index.html) -->
+  <nav>
+      <img src="img/SIGA LOGO.png" alt="Senac Logo" onclick="navigateTo('index.html')">
+      <div class="nav-links">
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Cursos</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a>
+                  <a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a>
+                  <a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a>
+                  <a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Bolsas de estudo</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('bolsas.html', 'prouni')">ProUni</a>
+                  <a href="#" onclick="navigateTo('bolsas.html', 'fies')">FIES</a>
+                  <a href="#" onclick="navigateTo('bolsas.html', 'bolsa-social')">Bolsa Social</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Descontos</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('descontos.html', 'convenios')">Convênios</a>
+                  <a href="#" onclick="navigateTo('descontos.html', 'promocoes')">Promoções</a>
+                  <a href="#" onclick="navigateTo('descontos.html', 'ex-alunos')">Ex-alunos</a>
+              </div>
+          </div>
+          <a href="#" onclick="navigateTo('eventos.html')">Eventos</a>
+          <a href="#" onclick="navigateTo('unidades.html')">Unidades</a>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Para empresas</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('empresas.html', 'in-company')">Cursos In Company</a>
+                  <a href="#" onclick="navigateTo('empresas.html', 'parcerias')">Parcerias</a>
+                  <a href="#" onclick="navigateTo('empresas.html', 'estagio')">Programa de Estágio</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">O Senac</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('sobre.html', 'historia')">História</a>
+                  <a href="#" onclick="navigateTo('sobre.html', 'missao')">Missão e Valores</a>
+                  <a href="#" onclick="navigateTo('sobre.html', 'estrutura')">Estrutura</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Serviços</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a>
+                  <a href="#" onclick="navigateTo('servicos.html', 'atendimento')">Atendimento</a>
+                  <a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a>
+              </div>
+          </div>
+          <input type="text" placeholder="Buscar" id="search-input">
+          <button onclick="openLoginModal()">Login / Área Exclusiva</button>
+      </div>
+  </nav>
+  
+  <!-- Modal de Login (mesmo do index.html) -->
+  <div id="login-modal" class="modal">
+      <div class="modal-content">
+          <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+          <h2>Login / Área Exclusiva</h2>
+          <form id="login-form">
+              <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="password">Senha</label>
+                  <input type="password" id="password" name="password" required>
+              </div>
+              <div class="form-options">
+                  <div class="remember-me">
+                      <input type="checkbox" id="remember" name="remember">
+                      <label for="remember">Lembrar-me</label>
+                  </div>
+                  <a href="#" class="forgot-password">Esqueci minha senha</a>
+              </div>
+              <button type="submit" class="login-button">Entrar</button>
+          </form>
+          <div class="login-footer">
+              <p>Não tem uma conta? <a href="#" onclick="showRegistrationForm()">Cadastre-se</a></p>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Formulário de Cadastro (mesmo do index.html) -->
+  <div id="registration-form" class="modal">
+      <div class="modal-content">
+          <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+          <h2>Cadastre-se</h2>
+          <form id="register-form">
+              <div class="form-group">
+                  <label for="reg-name">Nome Completo</label>
+                  <input type="text" id="reg-name" name="name" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-email">E-mail</label>
+                  <input type="email" id="reg-email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-cpf">CPF</label>
+                  <input type="text" id="reg-cpf" name="cpf" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-phone">Telefone</label>
+                  <input type="tel" id="reg-phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-password">Senha</label>
+                  <input type="password" id="reg-password" name="password" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-confirm-password">Confirmar Senha</label>
+                  <input type="password" id="reg-confirm-password" name="confirm-password" required>
+              </div>
+              <div class="form-options">
+                  <div class="terms">
+                      <input type="checkbox" id="terms" name="terms" required>
+                      <label for="terms">Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                  </div>
+              </div>
+              <button type="submit" class="register-button">Cadastrar</button>
+          </form>
+          <div class="login-footer">
+              <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a></p>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Conteúdo da página de detalhes do curso -->
+  <div class="course-detail-header">
+      <div class="course-detail-header-content">
+          <span class="course-level">Graduação</span>
+          <h1>Análise e Desenvolvimento de Sistemas</h1>
+          <div class="course-meta">
+              <span class="course-meta-item"><strong>Área:</strong> Tecnologia</span>
+              <span class="course-meta-item"><strong>Duração:</strong> 5 semestres</span>
+              <span class="course-meta-item"><strong>Modalidade:</strong> Presencial e EAD</span>
+          </div>
+      </div>
+  </div>
+  
+  <div class="page-content course-detail-content">
+      <!-- Menu lateral -->
+      <div class="sidebar">
+          <h2>Navegação</h2>
+          <ul class="sidebar-menu">
+              <li class="active"><a href="#sobre">Sobre o Curso</a></li>
+              <li><a href="#grade">Grade Curricular</a></li>
+              <li><a href="#corpo-docente">Corpo Docente</a></li>
+              <li><a href="#mercado">Mercado de Trabalho</a></li>
+              <li><a href="#infraestrutura">Infraestrutura</a></li>
+              <li><a href="#inscricao">Inscrição</a></li>
+          </ul>
+          
+          <div class="course-summary-box">
+              <h3>Resumo do Curso</h3>
+              <div class="summary-item">
+                  <span class="summary-label">Grau:</span>
+                  <span class="summary-value">Tecnólogo</span>
+              </div>
+              <div class="summary-item">
+                  <span class="summary-label">Duração:</span>
+                  <span class="summary-value">5 semestres</span>
+              </div>
+              <div class="summary-item">
+                  <span class="summary-label">Carga Horária:</span>
+                  <span class="summary-value">2.000 horas</span>
+              </div>
+              <div class="summary-item">
+                  <span class="summary-label">Turno:</span>
+                  <span class="summary-value">Manhã, Noite e EAD</span>
+              </div>
+              <div class="summary-item">
+                  <span class="summary-label">Modalidade:</span>
+                  <span class="summary-value">Presencial e EAD</span>
+              </div>
+              <div class="summary-item">
+                  <span class="summary-label">Nota MEC:</span>
+                  <span class="summary-value">4</span>
+              </div>
+              <div class="summary-item">
+                  <span class="summary-label">Mensalidade:</span>
+                  <span class="summary-value">R$ 850,00</span>
+              </div>
+              <div class="summary-item">
+                  <span class="summary-label">Próxima Turma:</span>
+                  <span class="summary-value">Agosto/2025</span>
+              </div>
+              
+              <div class="course-actions">
+                  <button class="cta-button" onclick="openRegistrationModal()">Inscreva-se</button>
+                  <button class="secondary-button" onclick="navigateTo('contato.html', 'cursos')">Mais Informações</button>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Conteúdo principal -->
+      <div class="main-content">
+          <section id="sobre" class="content-section">
+              <h2>Sobre o Curso</h2>
+              <div class="section-image">
+                  <img src="/placeholder.svg?height=300&width=600" alt="Análise e Desenvolvimento de Sistemas">
+              </div>
+              <p>O curso de Análise e Desenvolvimento de Sistemas do Senac forma profissionais capazes de analisar, projetar, documentar, especificar, testar, implantar e manter sistemas computacionais. Com uma abordagem prática e alinhada às demandas do mercado, o curso prepara os alunos para atuar em diversas áreas da tecnologia da informação.</p>
+              
+              <h3>Objetivos do Curso</h3>
+              <p>Formar profissionais aptos a:</p>
+              <ul class="feature-list">
+                  <li>Analisar, projetar, documentar, implementar, testar, implantar e manter sistemas computacionais</li>
+                  <li>Avaliar, selecionar e utilizar metodologias, tecnologias e ferramentas adequadas para o desenvolvimento de sistemas</li>
+                  <li>Coordenar e trabalhar em equipes de desenvolvimento</li>
+                  <li>Aplicar princípios de qualidade de software</li>
+                  <li>Gerenciar projetos de sistemas de informação</li>
+                  <li>Identificar oportunidades de negócio e inovação na área de tecnologia</li>
+              </ul>
+              
+              <h3>Diferenciais</h3>
+              <div class="differentials-grid">
+                  <div class="differential-item">
+                      <div class="differential-icon">💻</div>
+                      <h4>Laboratórios Modernos</h4>
+                      <p>Infraestrutura tecnológica de ponta para aulas práticas.</p>
+                  </div>
+                  <div class="differential-item">
+                      <div class="differential-icon">👨‍💼</div>
+                      <h4>Professores Atuantes</h4>
+                      <p>Corpo docente formado por profissionais com experiência no mercado.</p>
+                  </div>
+                  <div class="differential-item">
+                      <div class="differential-icon">🔄</div>
+                      <h4>Grade Atualizada</h4>
+                      <p>Conteúdo programático alinhado às tendências e demandas do mercado.</p>
+                  </div>
+                  <div class="differential-item">
+                      <div class="differential-icon">🌐</div>
+                      <h4>Parcerias Tecnológicas</h4>
+                      <p>Acesso a ferramentas e plataformas líderes do mercado.</p>
+                  </div>
+              </div>
+              
+              <h3>Público-Alvo</h3>
+              <p>O curso é destinado a pessoas interessadas em ingressar ou se desenvolver na área de tecnologia da informação, que buscam uma formação prática e alinhada às demandas do mercado de trabalho.</p>
+              
+              <h3>Pré-Requisitos</h3>
+              <p>Para ingressar no curso, é necessário:</p>
+              <ul class="feature-list">
+                  <li>Ensino médio completo</li>
+                  <li>Aprovação no processo seletivo</li>
+              </ul>
+          </section>
+          
+          <section id="grade" class="content-section">
+              <h2>Grade Curricular</h2>
+              <p>O curso está estruturado em 5 semestres, com disciplinas que abordam desde fundamentos da computação até tecnologias avançadas e gestão de projetos.</p>
+              
+              <div class="curriculum-accordion">
+                  <div class="accordion-item">
+                      <div class="accordion-header">1º Semestre</div>
+                      <div class="accordion-content">
+                          <ul class="curriculum-list">
+                              <li>Algoritmos e Lógica de Programação</li>
+                              <li>Fundamentos de Computação</li>
+                              <li>Matemática Aplicada</li>
+                              <li>Comunicação e Expressão</li>
+                              <li>Introdução a Banco de Dados</li>
+                              <li>Metodologia Científica</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="accordion-item">
+                      <div class="accordion-header">2º Semestre</div>
+                      <div class="accordion-content">
+                          <ul class="curriculum-list">
+                              <li>Programação Orientada a Objetos</li>
+                              <li>Estrutura de Dados</li>
+                              <li>Banco de Dados Relacional</li>
+                              <li>Engenharia de Software</li>
+                              <li>Interface Humano-Computador</li>
+                              <li>Estatística Aplicada</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="accordion-item">
+                      <div class="accordion-header">3º Semestre</div>
+                      <div class="accordion-content">
+                          <ul class="curriculum-list">
+                              <li>Programação Web</li>
+                              <li>Desenvolvimento Mobile</li>
+                              <li>Banco de Dados Avançado</li>
+                              <li>Redes de Computadores</li>
+                              <li>Análise e Projeto de Sistemas</li>
+                              <li>Empreendedorismo</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="accordion-item">
+                      <div class="accordion-header">4º Semestre</div>
+                      <div class="accordion-content">
+                          <ul class="curriculum-list">
+                              <li>Desenvolvimento Web Avançado</li>
+                              <li>Arquitetura de Software</li>
+                              <li>Segurança da Informação</li>
+                              <li>Sistemas Distribuídos</li>
+                              <li>Gestão de Projetos</li>
+                              <li>Tópicos Especiais em TI I</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="accordion-item">
+                      <div class="accordion-header">5º Semestre</div>
+                      <div class="accordion-content">
+                          <ul class="curriculum-list">
+                              <li>Inteligência Artificial</li>
+                              <li>DevOps e Integração Contínua</li>
+                              <li>Qualidade de Software</li>
+                              <li>Tópicos Especiais em TI II</li>
+                              <li>Ética e Legislação em TI</li>
+                              <li>Projeto Integrador</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              
+              <h3>Carga Horária</h3>
+              <div class="hours-distribution">
+                  <div class="hours-item">
+                      <span class="hours-value">1.800h</span>
+                      <span class="hours-label">Disciplinas Obrigatórias</span>
+                  </div>
+                  <div class="hours-item">
+                      <span class="hours-value">100h</span>
+                      <span class="hours-label">Atividades Complementares</span>
+                  </div>
+                  <div class="hours-item">
+                      <span class="hours-value">100h</span>
+                      <span class="hours-label">Projeto Integrador</span>
+                  </div>
+                  <div class="hours-item">
+                      <span class="hours-value">2.000h</span>
+                      <span class="hours-label">Total</span>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="corpo-docente" class="content-section">
+              <h2>Corpo Docente</h2>
+              <p>O curso conta com professores altamente qualificados, com formação acadêmica sólida e experiência prática no mercado de tecnologia.</p>
+              
+              <div class="faculty-grid">
+                  <div class="faculty-card">
+                      <div class="faculty-image">
+                          <img src="/placeholder.svg?height=150&width=150" alt="Professor">
+                      </div>
+                      <div class="faculty-info">
+                          <h4>Prof. Dr. Carlos Mendes</h4>
+                          <p class="faculty-title">Coordenador do Curso</p>
+                          <p class="faculty-bio">Doutor em Ciência da Computação, com mais de 15 anos de experiência em desenvolvimento de software e gestão de projetos de TI.</p>
+                      </div>
+                  </div>
+                  <div class="faculty-card">
+                      <div class="faculty-image">
+                          <img src="/placeholder.svg?height=150&width=150" alt="Professora">
+                      </div>
+                      <div class="faculty-info">
+                          <h4>Profa. Dra. Ana Souza</h4>
+                          <p class="faculty-title">Professora de Programação Web</p>
+                          <p class="faculty-bio">Doutora em Engenharia de Software, especialista em desenvolvimento web e mobile, com experiência em grandes empresas de tecnologia.</p>
+                      </div>
+                  </div>
+                  <div class="faculty-card">
+                      <div class="faculty-image">
+                          <img src="/placeholder.svg?height=150&width=150" alt="Professor">
+                      </div>
+                      <div class="faculty-info">
+                          <h4>Prof. Me. Ricardo Almeida</h4>
+                          <p class="faculty-title">Professor de Banco de Dados</p>
+                          <p class="faculty-bio">Mestre em Sistemas de Informação, especialista em bancos de dados relacionais e NoSQL, com vasta experiência em projetos de Business Intelligence.</p>
+                      </div>
+                  </div>
+                  <div class="faculty-card">
+                      <div class="faculty-image">
+                          <img src="/placeholder.svg?height=150&width=150" alt="Professor">
+                      </div>
+                      <div class="faculty-info">
+                          <h4>Prof. Me. Marcos Oliveira</h4>
+                          <p class="faculty-title">Professor de Engenharia de Software</p>
+                          <p class="faculty-bio">Mestre em Engenharia de Software, certificado em metodologias ágeis, com experiência como Scrum Master e líder técnico em empresas de tecnologia.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <p class="faculty-note">O corpo docente completo é composto por mais de 20 professores especialistas, mestres e doutores, todos com experiência acadêmica e profissional na área de tecnologia.</p>
+          </section>
+          
+          <section id="mercado" class="content-section">
+              <h2>Mercado de Trabalho</h2>
+              <div class="section-image">
+                  <img src="/placeholder.svg?height=300&width=600" alt="Mercado de Trabalho em TI">
+              </div>
+              <p>O mercado de trabalho para profissionais de Análise e Desenvolvimento de Sistemas está em constante expansão, com alta demanda por profissionais qualificados em diversos setores da economia.</p>
+              
+              <h3>Áreas de Atuação</h3>
+              <div class="career-areas">
+                  <div class="career-area">
+                      <h4>Desenvolvimento de Software</h4>
+                      <p>Criação de aplicações web, mobile e desktop para diversos segmentos.</p>
+                  </div>
+                  <div class="career-area">
+                      <h4>Análise de Sistemas</h4>
+                      <p>Levantamento de requisitos, modelagem e especificação de sistemas.</p>
+                  </div>
+                  <div class="career-area">
+                      <h4>Banco de Dados</h4>
+                      <p>Modelagem, implementação e administração de bancos de dados.</p>
+                  </div>
+                  <div class="career-area">
+                      <h4>Gestão de Projetos</h4>
+                      <p>Planejamento, execução e monitoramento de projetos de TI.</p>
+                  </div>
+                  <div class="career-area">
+                      <h4>Qualidade de Software</h4>
+                      <p>Testes, validação e garantia de qualidade de sistemas.</p>
+                  </div>
+                  <div class="career-area">
+                      <h4>Segurança da Informação</h4>
+                      <p>Implementação de políticas e soluções de segurança.</p>
+                  </div>
+              </div>
+              
+              <h3>Perspectivas Profissionais</h3>
+              <p>Segundo pesquisas recentes, o setor de tecnologia da informação continua em crescimento, com previsão de aumento na demanda por profissionais qualificados nos próximos anos. Os salários são competitivos e as oportunidades de crescimento na carreira são amplas.</p>
+              
+              <div class="salary-info">
+                  <h4>Faixa Salarial</h4>
+                  <div class="salary-range">
+                      <div class="salary-level">
+                          <span class="salary-position">Júnior</span>
+                          <span class="salary-value">R$ 3.000 - R$ 5.000</span>
+                      </div>
+                      <div class="salary-level">
+                          <span class="salary-position">Pleno</span>
+                          <span class="salary-value">R$ 5.000 - R$ 8.000</span>
+                      </div>
+                      <div class="salary-level">
+                          <span class="salary-position">Sênior</span>
+                          <span class="salary-value">R$ 8.000 - R$ 15.000+</span>
+                      </div>
+                  </div>
+                  <p class="salary-note">*Valores aproximados baseados em pesquisas de mercado. Podem variar conforme região, empresa e experiência.</p>
+              </div>
+              
+              <h3>Depoimentos de Ex-alunos</h3>
+              <div class="testimonials-grid">
+                  <div class="testimonial-item">
+                      <p class="testimonial-quote">"O curso me proporcionou uma base sólida para ingressar no mercado de trabalho. Hoje atuo como desenvolvedor full-stack em uma startup de tecnologia."</p>
+                      <p class="testimonial-author">João Silva, Turma 2022</p>
+                  </div>
+                  <div class="testimonial-item">
+                      <p class="testimonial-quote">"A abordagem prática do curso e os professores com experiência de mercado fizeram toda a diferença na minha formação. Consegui emprego antes mesmo de me formar."</p>
+                      <p class="testimonial-author">Maria Santos, Turma 2021</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="infraestrutura" class="content-section">
+              <h2>Infraestrutura</h2>
+              <p>O Senac oferece infraestrutura moderna e completa para o desenvolvimento das atividades acadêmicas do curso de Análise e Desenvolvimento de Sistemas.</p>
+              
+              <div class="facilities-grid">
+                  <div class="facility-card">
+                      <div class="facility-image">
+                          <img src="/placeholder.svg?height=200&width=300" alt="Laboratório de Informática">
+                      </div>
+                      <h4>Laboratórios de Informática</h4>
+                      <p>Equipados com computadores de última geração, softwares atualizados e acesso à internet de alta velocidade.</p>
+                  </div>
+                  <div class="facility-card">
+                      <div class="facility-image">
+                          <img src="/placeholder.svg?height=200&width=300" alt="Biblioteca">
+                      </div>
+                      <h4>Biblioteca</h4>
+                      <p>Acervo físico e digital com livros, periódicos e bases de dados especializadas em tecnologia da informação.</p>
+                  </div>
+                  <div class="facility-card">
+                      <div class="facility-image">
+                          <img src="/placeholder.svg?height=200&width=300" alt="Espaços de Convivência">
+                      </div>
+                      <h4>Espaços de Convivência</h4>
+                      <p>Áreas para estudo em grupo, descanso e integração entre os alunos.</p>
+                  </div>
+                  <div class="facility-card">
+                      <div class="facility-image">
+                          <img src="/placeholder.svg?height=200&width=300" alt="Laboratório de Redes">
+                      </div>
+                      <h4>Laboratório de Redes</h4>
+                      <p>Ambiente específico para práticas de configuração e administração de redes de computadores.</p>
+                  </div>
+              </div>
+              
+              <h3>Recursos Tecnológicos</h3>
+              <ul class="feature-list">
+                  <li>Acesso a plataformas de desenvolvimento como GitHub, Azure DevOps e AWS</li>
+                  <li>Licenças de softwares profissionais para desenvolvimento e design</li>
+                  <li>Ambiente virtual de aprendizagem com materiais didáticos e atividades online</li>
+                  <li>Wi-Fi de alta velocidade em todo o campus</li>
+                  <li>Acesso a dispositivos móveis para testes de aplicativos</li>
+              </ul>
+          </section>
+          
+          <section id="inscricao" class="content-section">
+              <h2>Inscrição</h2>
+              <p>Para se inscrever no curso de Análise e Desenvolvimento de Sistemas, siga os passos abaixo:</p>
+              
+              <div class="process-steps">
+                  <div class="process-step">
+                      <div class="step-number">1</div>
+                      <div class="step-content">
+                          <h4>Inscrição Online</h4>
+                          <p>Preencha o formulário de inscrição no site do Senac.</p>
+                      </div>
+                  </div>
+                  <div class="process-step">
+                      <div class="step-number">2</div>
+                      <div class="step-content">
+                          <h4>Processo Seletivo</h4>
+                          <p>Participe da prova de seleção na data agendada.</p>
+                      </div>
+                  </div>
+                  <div class="process-step">
+                      <div class="step-number">3</div>
+                      <div class="step-content">
+                          <h4>Resultado</h4>
+                          <p>Consulte o resultado do processo seletivo no site.</p>
+                      </div>
+                  </div>
+                  <div class="process-step">
+                      <div class="step-number">4</div>
+                      <div class="step-content">
+                          <h4>Matrícula</h4>
+                          <p>Realize a matrícula com a documentação necessária.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <h3>Documentos Necessários</h3>
+              <ul class="feature-list">
+                  <li>Documento de identidade (RG ou CNH)</li>
+                  <li>CPF</li>
+                  <li>Comprovante de residência</li>
+                  <li>Certificado de conclusão do ensino médio</li>
+                  <li>Histórico escolar do ensino médio</li>
+                  <li>1 foto 3x4 recente</li>
+              </ul>
+              
+              <h3>Investimento</h3>
+              <div class="investment-info">
+                  <div class="investment-item">
+                      <span class="investment-label">Matrícula:</span>
+                      <span class="investment-value">R$ 850,00</span>
+                  </div>
+                  <div class="investment-item">
+                      <span class="investment-label">Mensalidade:</span>
+                      <span class="investment-value">R$ 850,00 (30 parcelas)</span>
+                  </div>
+                  <div class="investment-item">
+                      <span class="investment-label">Investimento Total:</span>
+                      <span class="investment-value">R$ 25.500,00</span>
+                  </div>
+              </div>
+              
+              <h3>Formas de Pagamento</h3>
+              <ul class="feature-list">
+                  <li>Boleto bancário</li>
+                  <li>Cartão de crédito (até 12x)</li>
+                  <li>Financiamento estudantil (FIES)</li>
+                  <li>Bolsas de estudo (ProUni, Educa Mais Brasil, Quero Bolsa)</li>
+              </ul>
+              
+              <div class="cta-box">
+                  <h3>Inscreva-se Agora</h3>
+                  <p>Garanta sua vaga no curso de Análise e Desenvolvimento de Sistemas e comece a construir sua carreira em tecnologia.</p>
+                  <div class="cta-buttons">
+                      <button class="cta-button" onclick="openRegistrationModal()">Fazer Inscrição</button>
+                      <button class="secondary-button" onclick="navigateTo('contato.html', 'cursos')">Tirar Dúvidas</button>
+                  </div>
+              </div>
+          </section>
+      </div>
+  </div>
+  
+  <!-- Seção de cursos relacionados -->
+  <div class="related-courses-section">
+      <h2>Cursos Relacionados</h2>
+      <div class="related-courses-container">
+          <div class="related-course-card">
+              <div class="related-course-image">
+                  <img src="/placeholder.svg?height=150&width=250" alt="Ciência de Dados">
+              </div>
+              <h3>Ciência de Dados</h3>
+              <p>Graduação | 5 semestres</p>
+              <button class="secondary-button" onclick="navigateTo('detalhes-curso.html', 'ciencia-dados')">Ver Curso</button>
+          </div>
+          <div class="related-course-card">
+              <div class="related-course-image">
+                  <img src="/placeholder.svg?height=150&width=250" alt="Sistemas para Internet">
+              </div>
+              <h3>Sistemas para Internet</h3>
+              <p>Graduação | 5 semestres</p>
+              <button class="secondary-button" onclick="navigateTo('detalhes-curso.html', 'spi')">Ver Curso</button>
+          </div>
+          <div class="related-course-card">
+              <div class="related-course-image">
+                  <img src="/placeholder.svg?height=150&width=250" alt="Segurança da Informação">
+              </div>
+              <h3>Segurança da Informação</h3>
+              <p>Graduação | 5 semestres</p>
+              <button class="secondary-button" onclick="navigateTo('detalhes-curso.html', 'seguranca-informacao')">Ver Curso</button>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Rodapé (mesmo do index.html) -->
+  <footer>
+      <div class="footer-content">
+          <div class="footer-column">
+              <h3>Institucional</h3>
+              <ul>
+                  <li><a href="#" onclick="navigateTo('sobre.html')">Sobre o Senac</a></li>
+                  <li><a href="#" onclick="navigateTo('trabalhe-conosco.html')">Trabalhe Conosco</a></li>
+                  <li><a href="#" onclick="navigateTo('responsabilidade-social.html')">Responsabilidade Social</a></li>
+                  <li><a href="#" onclick="navigateTo('noticias.html')">Notícias</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Cursos</h3>
+              <ul>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a></li>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a></li>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a></li>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Serviços</h3>
+              <ul>
+                  <li><a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a></li>
+                  <li><a href="#" onclick="openLoginModal()">Portal do Aluno</a></li>
+                  <li><a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a></li>
+                  <li><a href="#" onclick="navigateTo('bolsas.html')">Bolsas e Financiamentos</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Contato</h3>
+              <ul>
+                  <li>Central de Atendimento: 0800 883 2000</li>
+                  <li>atendimento@sp.senac.br</li>
+                  <li>
+                      <div class="social-media">
+                          <a href="#" class="social-icon">FB</a>
+                          <a href="#" class="social-icon">IG</a>
+                          <a href="#" class="social-icon">YT</a>
+                          <a href="#" class="social-icon">LI</a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2025 Senac SP - Todos os direitos reservados</p>
+      </div>
+  </footer>
+
+  <!-- Mensagem de notificação -->
+  <div id="notification" class="notification">
+      <span id="notification-message"></span>
+      <span class="close-notification" onclick="closeNotification()">&times;</span>
+  </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Obter o parâmetro da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const section = urlParams.get('section');
+    
+    // Configurar o conteúdo com base no parâmetro
+    if (section) {
+      configurarCurso(section);
+    }
+  });
+  
+  function configurarCurso(cursoId) {
+    // Definir os dados dos cursos
+    const cursos = {
+      'ads': {
+        nivel: 'Graduação',
+        titulo: 'Análise e Desenvolvimento de Sistemas',
+        area: 'Tecnologia',
+        duracao: '5 semestres',
+        modalidade: 'Presencial e EAD',
+        grau: 'Tecnólogo',
+        cargaHoraria: '2.000 horas',
+        turno: 'Manhã, Noite e EAD',
+        notaMec: '4',
+        mensalidade: 'R$ 850,00',
+        proximaTurma: 'Agosto/2025',
+        descricao: 'O curso de Análise e Desenvolvimento de Sistemas do Senac forma profissionais capazes de analisar, projetar, documentar, especificar, testar, implantar e manter sistemas computacionais. Com uma abordagem prática e alinhada às demandas do mercado, o curso prepara os alunos para atuar em diversas áreas da tecnologia da informação.'
+      },
+      'cc': {
+        nivel: 'Bacharelado',
+        titulo: 'Ciências da Computação',
+        area: 'Tecnologia',
+        duracao: '8 semestres',
+        modalidade: 'Presencial e EAD',
+        grau: 'Bacharelado',
+        cargaHoraria: '3.200 horas',
+        turno: 'Manhã, Noite e EAD',
+        notaMec: '5',
+        mensalidade: 'R$ 950,00',
+        proximaTurma: 'Fevereiro/2026',
+        descricao: 'O curso de Ciências da Computação do Senac oferece uma formação sólida em fundamentos teóricos e científicos da computação, preparando profissionais para pesquisa e desenvolvimento de novas tecnologias. Com ênfase em matemática, algoritmos e teoria da computação, o curso forma profissionais capazes de resolver problemas complexos e inovar no campo da tecnologia.'
+      },
+      'si': {
+        nivel: 'Bacharelado',
+        titulo: 'Sistemas de Informação',
+        area: 'Tecnologia',
+        duracao: '8 semestres',
+        modalidade: 'Presencial',
+        grau: 'Bacharelado',
+        cargaHoraria: '3.000 horas',
+        turno: 'Manhã e Noite',
+        notaMec: '4',
+        mensalidade: 'R$ 900,00',
+        proximaTurma: 'Fevereiro/2026',
+        descricao: 'O curso de Sistemas de Informação do Senac une tecnologia e gestão, preparando profissionais para alinhar TI às estratégias de negócio das organizações. Com foco em desenvolvimento de sistemas, gestão de projetos e governança de TI, o curso forma profissionais completos para atuar tanto no desenvolvimento quanto na gestão de recursos tecnológicos.'
+      },
+      'spi': {
+        nivel: 'Tecnólogo',
+        titulo: 'Sistemas para Internet',
+        area: 'Tecnologia',
+        duracao: '5 semestres',
+        modalidade: 'Presencial e EAD',
+        grau: 'Tecnólogo',
+        cargaHoraria: '2.000 horas',
+        turno: 'Manhã, Noite e EAD',
+        notaMec: '4',
+        mensalidade: 'R$ 820,00',
+        proximaTurma: 'Agosto/2025',
+        descricao: 'O curso de Sistemas para Internet do Senac oferece formação especializada em desenvolvimento web e mobile, com foco em tecnologias front-end, back-end e experiência do usuário. Preparando profissionais para criar aplicações web modernas, responsivas e escaláveis, o curso aborda as principais linguagens, frameworks e metodologias do mercado.'
+      },
+      'gti': {
+        nivel: 'Tecnólogo',
+        titulo: 'Gestão da Tecnologia da Informação',
+        area: 'Tecnologia',
+        duracao: '5 semestres',
+        modalidade: 'Presencial e EAD',
+        grau: 'Tecnólogo',
+        cargaHoraria: '2.000 horas',
+        turno: 'Manhã, Noite e EAD',
+        notaMec: '4',
+        mensalidade: 'R$ 830,00',
+        proximaTurma: 'Agosto/2025',
+        descricao: 'O curso de Gestão da Tecnologia da Informação do Senac forma profissionais capacitados para gerenciar recursos tecnológicos, implementar governança de TI e liderar equipes e projetos tecnológicos. Com foco em gestão, o curso prepara profissionais para tomar decisões estratégicas relacionadas à tecnologia nas organizações.'
+      }
+    };
+    
+    // Verificar se o curso existe
+    if (!cursos[cursoId]) {
+      cursoId = 'ads'; // Curso padrão se o ID não for encontrado
+    }
+    
+    const curso = cursos[cursoId];
+    
+    // Atualizar os elementos da página com os dados do curso
+    document.querySelector('.course-level').textContent = curso.nivel;
+    document.querySelector('.course-detail-header-content h1').textContent = curso.titulo;
+    document.querySelectorAll('.course-meta-item')[0].innerHTML = `<strong>Área:</strong> ${curso.area}`;
+    document.querySelectorAll('.course-meta-item')[1].innerHTML = `<strong>Duração:</strong> ${curso.duracao}`;
+    document.querySelectorAll('.course-meta-item')[2].innerHTML = `<strong>Modalidade:</strong> ${curso.modalidade}`;
+    
+    // Atualizar o resumo do curso
+    document.querySelector('.summary-value:nth-child(2)').textContent = curso.grau;
+    document.querySelector('.summary-item:nth-child(2) .summary-value').textContent = curso.duracao;
+    document.querySelector('.summary-item:nth-child(3) .summary-value').textContent = curso.cargaHoraria;
+    document.querySelector('.summary-item:nth-child(4) .summary-value').textContent = curso.turno;
+    document.querySelector('.summary-item:nth-child(5) .summary-value').textContent = curso.modalidade;
+    document.querySelector('.summary-item:nth-child(6) .summary-value').textContent = curso.notaMec;
+    document.querySelector('.summary-item:nth-child(7) .summary-value').textContent = curso.mensalidade;
+    document.querySelector('.summary-item:nth-child(8) .summary-value').textContent = curso.proximaTurma;
+    
+    // Atualizar a descrição do curso
+    document.querySelector('#sobre p:nth-child(3)').textContent = curso.descricao;
+    
+    // Atualizar o título da página
+    document.title = `${curso.titulo} - Senac`;
+    
+    // Atualizar a imagem do curso (se necessário)
+    document.querySelector('.section-image img').alt = curso.titulo;
+    
+    // Atualizar os links de inscrição e mais informações
+    document.querySelectorAll('.cta-button').forEach(button => {
+      button.setAttribute('onclick', `openRegistrationModal('${cursoId}')`);
+    });
+    
+    // Atualizar os cursos relacionados
+    atualizarCursosRelacionados(cursoId);
+  }
+  
+  function atualizarCursosRelacionados(cursoAtual) {
+    // Lista de todos os cursos disponíveis
+    const todosCursos = {
+      'ads': { titulo: 'Análise e Desenvolvimento de Sistemas', nivel: 'Graduação', duracao: '5 semestres' },
+      'cc': { titulo: 'Ciências da Computação', nivel: 'Bacharelado', duracao: '8 semestres' },
+      'si': { titulo: 'Sistemas de Informação', nivel: 'Bacharelado', duracao: '8 semestres' },
+      'spi': { titulo: 'Sistemas para Internet', nivel: 'Tecnólogo', duracao: '5 semestres' },
+      'gti': { titulo: 'Gestão da Tecnologia da Informação', nivel: 'Tecnólogo', duracao: '5 semestres' }
+    };
+    
+    // Remover o curso atual da lista
+    const cursosRelacionados = Object.keys(todosCursos)
+      .filter(id => id !== cursoAtual)
+      .slice(0, 3); // Pegar apenas 3 cursos relacionados
+    
+    // Atualizar os cards de cursos relacionados
+    const container = document.querySelector('.related-courses-container');
+    container.innerHTML = '';
+    
+    cursosRelacionados.forEach(id => {
+      const curso = todosCursos[id];
+      const card = document.createElement('div');
+      card.className = 'related-course-card';
+      card.innerHTML = `
+        <div class="related-course-image">
+          <img src="/placeholder.svg?height=150&width=250" alt="${curso.titulo}">
+        </div>
+        <h3>${curso.titulo}</h3>
+        <p>${curso.nivel} | ${curso.duracao}</p>
+        <button class="secondary-button" onclick="navigateTo('detalhes-curso.html', '${id}')">Ver Curso</button>
+      `;
+      container.appendChild(card);
+    });
+  }
+</script>
+</body>
+</html>
+

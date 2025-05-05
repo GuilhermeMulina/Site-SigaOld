@@ -1,0 +1,501 @@
+/* Importar fonte do Google */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Estilos globais */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para a barra de navegação */
+nav {
+    background: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav img {
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+nav img:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #1e1e1e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #2c5e3f;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: #2c5e3f;
+}
+
+/* Estilos para o container do formulário */
+.form-container {
+    max-width: 1200px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+}
+
+/* Título do formulário */
+.form-title {
+    text-align: center;
+    color: #2c5e3f;; /* Dourado */
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+/* Layout de duas colunas */
+.form-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.form-column {
+    flex: 3;
+}
+
+.docs-column {
+    flex: 2;
+    align-self: flex-start;
+    position: sticky;
+    top: 100px;
+}
+
+/* Estilos para as seções do formulário */
+.form-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+.form-section h2 {
+    color: #2c5e3f;/* Dourado */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Estilos para os grupos de campos */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2c5e3f;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(44, 94, 63, 0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 0;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Estilos para campos obrigatórios */
+.required-field {
+    display: none;
+    color: #2c5e3f;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.form-group input:invalid:not(:focus):not(:placeholder-shown) + .required-field {
+    display: block;
+}
+
+/* Estilos para o upload de documentos */
+.document-upload-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.upload-box {
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-box:hover {
+    border-color: #2c5e3f;
+    background-color: rgba(44, 94, 63, 0.05);
+}
+
+.upload-icon {
+    margin-bottom: 10px;
+    color: #2c5e3f;
+}
+
+.upload-text span {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.upload-text small {
+    color: #888;
+    font-size: 12px;
+}
+
+.file-info {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.file-info.success {
+    color: #2c5e3f;
+}
+
+.file-info.error {
+    color: #2c5e3f;;
+}
+
+/* Estilos para a seção de documentos */
+.docs-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.docs-section h2 {
+    color: #2c5e3f;; /* Dourado */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.docs-section h3 {
+    color: #333;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.docs-section h4 {
+    color: #2c5e3f;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.docs-note {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.docs-list {
+    padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.docs-list li {
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Estilos para os botões e ações do formulário */
+.form-actions {
+    margin-top: 30px;
+}
+
+.terms-checkbox {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.terms-checkbox input {
+    margin-right: 10px;
+    margin-top: 5px;
+    accent-color: #2c5e3f;
+}
+
+.terms-checkbox label {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.submit-button {
+    background-color: #2c5e3f;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #1e4530;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o rodapé */
+footer {
+    background: #1e1e1e;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.footer-column {
+    width: 250px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+    color: white;
+}
+
+.footer-column h3:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #2c5e3f;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.social-icon:hover {
+    background-color: #2c5e3f;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    text-align: center;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* Notificação */
+.notification {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #2c5e3f;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1002;
+    max-width: 350px;
+    animation: slideIn 0.5s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.close-notification {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.close-notification:hover {
+    transform: scale(1.2);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .form-layout {
+        flex-direction: column;
+    }
+    
+    .docs-column {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    nav img {
+        margin-bottom: 15px;
+    }
+    
+    .form-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .document-upload-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-section {
+        padding: 15px;
+    }
+    
+    .form-section h2,
+    .docs-section h2 {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,567 @@
+/* Estilos específicos para a página de detalhes do curso */
+
+/* Cabeçalho do curso */
+.course-detail-header {
+  background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)),
+    url("/placeholder.svg?height=400&width=1200");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 60px 20px;
+}
+
+.course-detail-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.course-level {
+  display: inline-block;
+  background-color: #ff6600;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.course-detail-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.course-meta-item {
+  font-size: 1.1rem;
+}
+
+/* Layout da página de detalhes */
+.course-detail-content {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Box de resumo do curso */
+.course-summary-box {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.course-summary-box h3 {
+  color: #003366;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.summary-label {
+  font-weight: bold;
+  color: #666;
+}
+
+.summary-value {
+  color: #003366;
+}
+
+.course-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.course-actions button {
+  width: 100%;
+}
+
+/* Seções de conteúdo */
+.content-section {
+  margin-bottom: 40px;
+}
+
+.content-section h2 {
+  color: #003366;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff6600;
+}
+
+.content-section h3 {
+  color: #003366;
+  font-size: 1.3rem;
+  margin: 30px 0 15px;
+}
+
+.section-image {
+  margin-bottom: 20px;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Diferenciais */
+.differentials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.differential-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.differential-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+.differential-item h4 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+/* Grade curricular */
+.curriculum-accordion {
+  margin: 20px 0;
+}
+
+.accordion-item {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header {
+  background-color: #003366;
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+}
+
+.accordion-header:after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.accordion-item.active .accordion-header:after {
+  content: "-";
+}
+
+.accordion-content {
+  background-color: #f9f9f9;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-item.active .accordion-content {
+  padding: 20px;
+  max-height: 500px;
+}
+
+.curriculum-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.curriculum-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.curriculum-list li:last-child {
+  border-bottom: none;
+}
+
+/* Distribuição de carga horária */
+.hours-distribution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.hours-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 150px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.hours-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 5px;
+}
+
+.hours-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Corpo docente */
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.faculty-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faculty-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.faculty-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.faculty-info {
+  flex: 1;
+}
+
+.faculty-info h4 {
+  color: #003366;
+  margin-bottom: 5px;
+}
+
+.faculty-title {
+  color: #ff6600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.faculty-bio {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.faculty-note {
+  font-style: italic;
+  color: #666;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+/* Áreas de carreira */
+.career-areas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.career-area {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.career-area h4 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+/* Informações salariais */
+.salary-info {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.salary-range {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.salary-level {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.salary-position {
+  display: block;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 5px;
+}
+
+.salary-value {
+  color: #ff6600;
+}
+
+.salary-note {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Depoimentos */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.testimonial-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.testimonial-quote:before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 2rem;
+  color: #003366;
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.testimonial-author {
+  color: #003366;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Infraestrutura */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.facility-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.facility-image {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.facility-image img {
+  width: 100%;
+  height: auto;
+}
+
+.facility-card h4 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+/* Investimento */
+.investment-info {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.investment-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.investment-item:last-child {
+  border-bottom: none;
+  font-weight: bold;
+}
+
+.investment-label {
+  font-weight: bold;
+  color: #666;
+}
+
+.investment-value {
+  color: #003366;
+}
+
+/* Cursos relacionados */
+.related-courses-section {
+  background-color: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.related-courses-section h2 {
+  color: #003366;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.related-courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.related-course-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.related-course-card:hover {
+  transform: translateY(-10px);
+}
+
+.related-course-image {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.related-course-image img {
+  width: 100%;
+  height: auto;
+}
+
+.related-course-card h3 {
+  color: #003366;
+  margin-bottom: 5px;
+}
+
+.related-course-card p {
+  color: #666;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .course-detail-content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .faculty-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .faculty-image {
+    margin: 0 auto 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .differentials-grid,
+  .career-areas,
+  .faculty-grid,
+  .facilities-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hours-distribution {
+    flex-direction: column;
+  }
+
+  .salary-range {
+    flex-direction: column;
+  }
+}
+

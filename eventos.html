@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Senac</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <script src="main.js" defer></script>
+    <!-- Favicon -->
+<link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMd1AAFcDfnAJUooKdc4EzujsY7Y4y3xd5ZQ&s" type="image/png">
+<link rel="apple-touch-icon" href="img/SIGA LOGO.png">
+</head>
+<body>
+    <!-- Barra de navegação (mesma do index.html) -->
+    <nav>
+        <img src="img/SIGA LOGO.png" alt="Senac Logo" onclick="navigateTo('index.html')">
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Cursos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Bolsas de estudo</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('bolsas.html', 'prouni')">ProUni</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'fies')">FIES</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'bolsa-social')">Bolsa Social</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Descontos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('descontos.html', 'convenios')">Convênios</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'promocoes')">Promoções</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'ex-alunos')">Ex-alunos</a>
+                </div>
+            </div>
+            <a href="#" onclick="navigateTo('eventos.html')">Eventos</a>
+            <a href="#" onclick="navigateTo('unidades.html')">Unidades</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Para empresas</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('empresas.html', 'in-company')">Cursos In Company</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'parcerias')">Parcerias</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'estagio')">Programa de Estágio</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">O Senac</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('sobre.html', 'historia')">História</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'missao')">Missão e Valores</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'estrutura')">Estrutura</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Serviços</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'atendimento')">Atendimento</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a>
+                </div>
+            </div>
+            <input type="text" placeholder="Buscar" id="search-input">
+            <button onclick="openLoginModal()">Login / Área Exclusiva</button>
+        </div>
+    </nav>
+    
+    <!-- Modal de Login (mesmo do index.html) -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <h2>Login / Área Exclusiva</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </div>
+                <button type="submit" class="login-button">Entrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Não tem uma conta? <a href="#" onclick="showRegistrationForm()">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Formulário de Cadastro (mesmo do index.html) -->
+    <div id="registration-form" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+            <h2>Cadastre-se</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-name">Nome Completo</label>
+                    <input type="text" id="reg-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-cpf">CPF</label>
+                    <input type="text" id="reg-cpf" name="cpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-phone">Telefone</label>
+                    <input type="tel" id="reg-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Senha</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirmar Senha</label>
+                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
+                </div>
+                <div class="form-options">
+                    <div class="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                    </div>
+                </div>
+                <button type="submit" class="register-button">Cadastrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Conteúdo da página de eventos -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1>Eventos e Atividades</h1>
+            <p>Confira nossa agenda de eventos, palestras, workshops e atividades especiais</p>
+        </div>
+    </div>
+    
+    <div class="page-content">
+        <!-- Filtros de eventos -->
+        <div class="events-filters">
+            <h2>Filtrar eventos</h2>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="event-month">Mês:</label>
+                    <select id="event-month">
+                        <option value="all">Todos</option>
+                        <option value="05">Maio/2025</option>
+                        <option value="06" selected>Junho/2025</option>
+                        <option value="07">Julho/2025</option>
+                        <option value="08">Agosto/2025</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="event-type">Tipo:</label>
+                    <select id="event-type">
+                        <option value="all">Todos</option>
+                        <option value="feira">Feiras</option>
+                        <option value="palestra">Palestras</option>
+                        <option value="workshop">Workshops</option>
+                        <option value="processo">Processos Seletivos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="event-campus">Campus:</label>
+                    <select id="event-campus">
+                        <option value="all">Todos</option>
+                        <option value="lapa">Lapa Scipião</option>
+                        <option value="santo-amaro">Santo Amaro</option>
+                        <option value="aclimacao">Aclimação</option>
+                        <option value="online">Online</option>
+                    </select>
+                </div>
+                <button class="filter-button">Aplicar</button>
+            </div>
+        </div>
+        
+        <!-- Destaque do evento principal -->
+        <div class="featured-event">
+            <div class="featured-event-image">
+                <img src="/placeholder.svg?height=400&width=800" alt="Feira de Profissões 2025">
+            </div>
+            <div class="featured-event-content">
+                <div class="event-badge">Destaque</div>
+                <h2>Feira de Profissões Senac 2025</h2>
+                <div class="event-meta">
+                    <div class="event-date-time">
+                        <span class="event-date">15 de Junho, 2025</span>
+                        <span class="event-time">10h às 18h</span>
+                    </div>
+                    <div class="event-location">
+                        <span>Campus Senac Lapa Scipião</span>
+                    </div>
+                </div>
+                <p class="event-description">
+                    A Feira de Profissões Senac 2025 é o maior evento de orientação profissional do ano. Conheça todos os cursos, converse com coordenadores e professores, participe de oficinas práticas e descubra qual carreira combina com você.
+                </p>
+                <div class="event-highlights">
+                    <div class="event-highlight-item">
+                        <h4>Oficinas Práticas</h4>
+                        <p>Experimente atividades das diversas áreas profissionais</p>
+                    </div>
+                    <div class="event-highlight-item">
+                        <h4>Palestras</h4>
+                        <p>Conheça as tendências do mercado de trabalho</p>
+                    </div>
+                    <div class="event-highlight-item">
+                        <h4>Descontos Especiais</h4>
+                        <p>Condições exclusivas para matrículas realizadas no evento</p>
+                    </div>
+                </div>
+                <div class="event-actions">
+                    <button class="cta-button" onclick="openRegistrationModal()">Inscreva-se Gratuitamente</button>
+                    <button class="secondary-button" onclick="window.open('https://maps.google.com', '_blank')">Como Chegar</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lista de eventos -->
+        <div class="events-list">
+            <h2>Próximos Eventos</h2>
+            
+            <!-- Evento 1 -->
+            <div class="event-item">
+                <div class="event-date-box">
+                    <span class="event-day">22</span>
+                    <span class="event-month">JUN</span>
+                </div>
+                <div class="event-details">
+                    <h3>Workshop de Inovação e Tecnologia</h3>
+                    <div class="event-meta">
+                        <span class="event-time">14h às 18h</span>
+                        <span class="event-location">Campus Senac Santo Amaro</span>
+                        <span class="event-type">Workshop</span>
+                    </div>
+                    <p>Palestra com especialistas sobre tendências em tecnologia e inovação. Aprenda sobre inteligência artificial, blockchain e outras tecnologias emergentes.</p>
+                    <div class="event-actions">
+                        <button class="secondary-button" onclick="navigateTo('detalhes-evento.html', 'workshop-inovacao')">Ver detalhes</button>
+                        <button class="cta-button" onclick="openRegistrationModal()">Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Evento 2 -->
+            <div class="event-item">
+                <div class="event-date-box">
+                    <span class="event-day">30</span>
+                    <span class="event-month">JUN</span>
+                </div>
+                <div class="event-details">
+                    <h3>Processo Seletivo 2025.2</h3>
+                    <div class="event-meta">
+                        <span class="event-time">9h às 12h</span>
+                        <span class="event-location">Todos os campi</span>
+                        <span class="event-type">Processo Seletivo</span>
+                    </div>
+                    <p>Inscrições abertas para o vestibular do segundo semestre. Vagas para todos os cursos de graduação e pós-graduação.</p>
+                    <div class="event-actions">
+                        <button class="secondary-button" onclick="navigateTo('detalhes-evento.html', 'vestibular')">Ver detalhes</button>
+                        <button class="cta-button" onclick="openRegistrationModal()">Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Evento 3 -->
+            <div class="event-item">
+                <div class="event-date-box">
+                    <span class="event-day">05</span>
+                    <span class="event-month">JUL</span>
+                </div>
+                <div class="event-details">
+                    <h3>Palestra: Carreira em Gastronomia</h3>
+                    <div class="event-meta">
+                        <span class="event-time">19h às 21h</span>
+                        <span class="event-location">Online</span>
+                        <span class="event-type">Palestra</span>
+                    </div>
+                    <p>Descubra as oportunidades e desafios da carreira em gastronomia com chefs renomados e especialistas do setor.</p>
+                    <div class="event-actions">
+                        <button class="secondary-button" onclick="navigateTo('detalhes-evento.html', 'palestra-gastronomia')">Ver detalhes</button>
+                        <button class="cta-button" onclick="openRegistrationModal()">Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Evento 4 -->
+            <div class="event-item">
+                <div class="event-date-box">
+                    <span class="event-day">12</span>
+                    <span class="event-month">JUL</span>
+                </div>
+                <div class="event-details">
+                    <h3>Feira de Estágios e Empregos</h3>
+                    <div class="event-meta">
+                        <span class="event-time">10h às 17h</span>
+                        <span class="event-location">Campus Senac Aclimação</span>
+                        <span class="event-type">Feira</span>
+                    </div>
+                    <p>Conecte-se com empresas que estão contratando. Traga seu currículo e participe de processos seletivos no local.</p>
+                    <div class="event-actions">
+                        <button class="secondary-button" onclick="navigateTo('detalhes-evento.html', 'feira-estagios')">Ver detalhes</button>
+                        <button class="cta-button" onclick="openRegistrationModal()">Inscrever-se</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calendário de eventos -->
+        <div class="events-calendar">
+            <h2>Calendário de Eventos</h2>
+            <p>Visualize todos os eventos programados para os próximos meses.</p>
+            <button class="secondary-button" onclick="navigateTo('calendario.html')">Ver calendário completo</button>
+        </div>
+    </div>
+    
+    <!-- Rodapé (mesmo do index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('sobre.html')">Sobre o Senac</a></li>
+                    <li><a href="#" onclick="navigateTo('trabalhe-conosco.html')">Trabalhe Conosco</a></li>
+                    <li><a href="#" onclick="navigateTo('responsabilidade-social.html')">Responsabilidade Social</a></li>
+                    <li><a href="#" onclick="navigateTo('noticias.html')">Notícias</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Cursos</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a></li>
+                    <li><a href="#" onclick="openLoginModal()">Portal do Aluno</a></li>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a></li>
+                    <li><a href="#" onclick="navigateTo('bolsas.html')">Bolsas e Financiamentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Central de Atendimento: 0800 883 2000</li>
+                    <li>atendimento@sp.senac.br</li>
+                    <li>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">FB</a>
+                            <a href="#" class="social-icon">IG</a>
+                            <a href="#" class="social-icon">YT</a>
+                            <a href="#" class="social-icon">LI</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Senac SP - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Mensagem de notificação -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <span class="close-notification" onclick="closeNotification()">&times;</span>
+    </div>
+</body>
+</html>

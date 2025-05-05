@@ -1,0 +1,650 @@
+/*<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Cliente - Siga Imóveis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="area-cliente.css">
+    <link rel="stylesheet" href="area-cliente-mobile.css">
+    <script src="main.js" defer></script>
+    <script src="area-cliente.js" defer></script>
+    <!-- Favicon -->
+<link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMd1AAFcDfnAJUooKdc4EzujsY7Y4y3xd5ZQ&s" type="image/png">
+<link rel="apple-touch-icon" href="img/SIGA LOGO.pngs">
+</head>
+<body>
+    <!-- Barra de navegação (mesma do index.html) -->
+    <nav>
+        <img src="img/SIGA LOGO.png" alt="Senac Logo" onclick="navigateTo('index.html')">
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Cursos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Bolsas de estudo</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('bolsas.html', 'prouni')">ProUni</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'fies')">FIES</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'bolsa-social')">Bolsa Social</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Descontos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('descontos.html', 'convenios')">Convênios</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'promocoes')">Promoções</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'ex-alunos')">Ex-alunos</a>
+                </div>
+            </div>
+            <a href="#" onclick="navigateTo('eventos.html')">Eventos</a>
+            <a href="#" onclick="navigateTo('unidades.html')">Unidades</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Para empresas</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('empresas.html', 'in-company')">Cursos In Company</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'parcerias')">Parcerias</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'estagio')">Programa de Estágio</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">O Senac</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('sobre.html', 'historia')">História</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'missao')">Missão e Valores</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'estrutura')">Estrutura</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Serviços</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'atendimento')">Atendimento</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a>
+                </div>
+            </div>
+            <input type="text" placeholder="Buscar" id="search-input">
+            <div id="user-menu-container">
+                <button id="user-menu-button" onclick="toggleUserMenu()">
+                    <span id="user-name">Guilherme</span>
+                    <span class="user-avatar">👤</span>
+                </button>
+                <div id="user-dropdown" class="user-dropdown">
+                    <a href="#" onclick="navigateTo('area-aluno.html')">Meu Painel</a>
+                    <a href="#" onclick="navigateTo('area-aluno.html', 'perfil')">Meu Perfil</a>
+                    <a href="#" onclick="navigateTo('area-aluno.html', 'academico')">Acadêmico</a>
+                    <a href="#" onclick="navigateTo('area-aluno.html', 'financeiro')">Financeiro</a>
+                    <a href="#" onclick="logout()">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Conteúdo da área do aluno -->
+    <div class="student-area">
+        <!-- Sidebar de navegação -->
+        <div class="student-sidebar">
+            <div class="student-profile">
+                <div class="student-avatar">
+                    <img src="" alt="Foto do Aluno" id="student-avatar-img">
+                </div>
+                <div class="student-info">
+                    <h3 id="sidebar-student-name">Guilherme...</h3>
+                    <p id="sidebar-student-course">Bacharelado em Ciências da Computação..</p>
+                    <p id="sidebar-student-ra">RA: 1827461829-5</p>
+                </div>
+            </div>
+            
+            <ul class="student-menu">
+                <li class="active" data-section="dashboard">
+                    <a href="#dashboard">
+                        <span class="menu-icon">📊</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li data-section="academico">
+                    <a href="#academico">
+                        <span class="menu-icon">📚</span>
+                        Acadêmico
+                    </a>
+                </li>
+                <li data-section="notas">
+                    <a href="#notas">
+                        <span class="menu-icon">📝</span>
+                        Notas e Frequência
+                    </a>
+                </li>
+                <li data-section="materiais">
+                    <a href="#materiais">
+                        <span class="menu-icon">📄</span>
+                        Materiais de Aula
+                    </a>
+                </li>
+                <li data-section="financeiro">
+                    <a href="#financeiro">
+                        <span class="menu-icon">💰</span>
+                        Financeiro
+                    </a>
+                </li>
+                <li data-section="requerimentos">
+                    <a href="#requerimentos">
+                        <span class="menu-icon">📋</span>
+                        Requerimentos
+                    </a>
+                </li>
+                <li data-section="calendario">
+                    <a href="#calendario">
+                        <span class="menu-icon">📅</span>
+                        Calendário Acadêmico
+                    </a>
+                </li>
+                <li data-section="perfil">
+                    <a href="#perfil">
+                        <span class="menu-icon">👤</span>
+                        Meu Perfil
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <button class="logout-button" onclick="logout()">Sair</button>
+            </div>
+        </div>
+        
+        <!-- Conteúdo principal -->
+        <div class="student-content">
+            <!-- Seção Dashboard -->
+            <section id="dashboard" class="content-section active">
+                <h1>Dashboard</h1>
+                <p class="welcome-message">Bem-vindo(a), <span id="dashboard-student-name">Aluno</span>!</p>
+                
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon">📚</div>
+                        <div class="card-content">
+                            <h3>Disciplinas Ativas</h3>
+                            <p class="card-value" id="active-subjects">Programação Web</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon">📝</div>
+                        <div class="card-content">
+                            <h3>Média Geral</h3>
+                            <p class="card-value" id="overall-average">9.5 </p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon">📅</div>
+                        <div class="card-content">
+                            <h3>Frequência</h3>
+                            <p class="card-value" id="overall-attendance">88.9%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon">💰</div>
+                        <div class="card-content">
+                            <h3>Situação Financeira</h3>
+                            <p class="card-value" id="financial-status">Duro e com fome</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-sections">
+                    <div class="dashboard-section">
+                        <h2>Próximas Atividades</h2>
+                        <div class="activities-list" id="upcoming-activities">
+                            <p class="loading-message">Entrega do site 03/04/25</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-section">
+                        <h2>Avisos</h2>
+                        <div class="announcements-list" id="announcements">
+                            <p class="loading-message">Nenhum aviso...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção Acadêmico -->
+            <section id="academico" class="content-section">
+                <h1>Acadêmico</h1>
+                
+                <div class="academic-info">
+                    <div class="academic-card">
+                        <h2>Informações do Curso</h2>
+                        <div class="academic-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Curso:</span>
+                                <span class="detail-value" id="course-name">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Modalidade:</span>
+                                <span class="detail-value" id="course-modality">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Período:</span>
+                                <span class="detail-value" id="course-period">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Semestre Atual:</span>
+                                <span class="detail-value" id="current-semester">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Coordenador:</span>
+                                <span class="detail-value" id="coordinator">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Unidade:</span>
+                                <span class="detail-value" id="campus">Carregando...</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="academic-card">
+                        <h2>Disciplinas do Semestre</h2>
+                        <div class="subjects-list" id="current-subjects">
+                            <p class="loading-message">Carregando disciplinas...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="academic-card">
+                    <h2>Histórico Acadêmico</h2>
+                    <div class="academic-history" id="academic-history">
+                        <p class="loading-message">Carregando histórico...</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção Notas e Frequência -->
+            <section id="notas" class="content-section">
+                <h1>Notas e Frequência</h1>
+                
+                <div class="grades-filter">
+                    <label for="semester-select">Semestre:</label>
+                    <select id="semester-select">
+                        <option value="current">Semestre Atual</option>
+                        <option value="2024.1">2024.1</option>
+                        <option value="2023.2">2023.2</option>
+                        <option value="2023.1">2023.1</option>
+                    </select>
+                </div>
+                
+                <div class="grades-table-container">
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Professor</th>
+                                <th>Nota 1</th>
+                                <th>Nota 2</th>
+                                <th>Média</th>
+                                <th>Frequência</th>
+                                <th>Situação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grades-table-body">
+                            <tr>
+                                <td colspan="7" class="loading-message">Carregando notas...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grades-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">Média Geral:</span>
+                        <span class="summary-value" id="semester-average">Carregando...</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Frequência Média:</span>
+                        <span class="summary-value" id="semester-attendance">Carregando...</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção Materiais de Aula -->
+            <section id="materiais" class="content-section">
+                <h1>Materiais de Aula</h1>
+                
+                <div class="materials-filter">
+                    <label for="material-subject-select">Disciplina:</label>
+                    <select id="material-subject-select">
+                        <option value="all">Todas as Disciplinas</option>
+                    </select>
+                </div>
+                
+                <div class="materials-list" id="materials-container">
+                    <p class="loading-message">Carregando materiais...</p>
+                </div>
+            </section>
+            
+            <!-- Seção Financeiro -->
+            <section id="financeiro" class="content-section">
+                <h1>Financeiro</h1>
+                
+                <div class="financial-summary">
+                    <div class="financial-card">
+                        <h3>Resumo Financeiro</h3>
+                        <div class="financial-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Valor da Mensalidade:</span>
+                                <span class="detail-value" id="monthly-fee">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Vencimento:</span>
+                                <span class="detail-value" id="due-date">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bolsa/Desconto:</span>
+                                <span class="detail-value" id="scholarship">Carregando...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Situação:</span>
+                                <span class="detail-value" id="payment-status">Carregando...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="financial-table-container">
+                    <h3>Mensalidades</h3>
+                    <table class="financial-table">
+                        <thead>
+                            <tr>
+                                <th>Referência</th>
+                                <th>Vencimento</th>
+                                <th>Valor</th>
+                                <th>Desconto</th>
+                                <th>Valor Final</th>
+                                <th>Situação</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="financial-table-body">
+                            <tr>
+                                <td colspan="7" class="loading-message">Carregando mensalidades...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Seção Requerimentos -->
+            <section id="requerimentos" class="content-section">
+                <h1>Requerimentos</h1>
+                
+                <div class="requests-actions">
+                    <button class="cta-button" onclick="showNewRequestForm()">Novo Requerimento</button>
+                </div>
+                
+                <div class="requests-list">
+                    <h3>Meus Requerimentos</h3>
+                    <table class="requests-table">
+                        <thead>
+                            <tr>
+                                <th>Protocolo</th>
+                                <th>Tipo</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requests-table-body">
+                            <tr>
+                                <td colspan="5" class="loading-message">Carregando requerimentos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Formulário de novo requerimento (inicialmente oculto) -->
+                <div id="new-request-form" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal" onclick="closeNewRequestForm()">&times;</span>
+                        <h2>Novo Requerimento</h2>
+                        <form id="request-form">
+                            <div class="form-group">
+                                <label for="request-type">Tipo de Requerimento</label>
+                                <select id="request-type" name="request-type" required>
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="declaracao">Declaração de Matrícula</option>
+                                    <option value="historico">Histórico Escolar</option>
+                                    <option value="revisao">Revisão de Nota</option>
+                                    <option value="abono">Abono de Faltas</option>
+                                    <option value="transferencia">Transferência</option>
+                                    <option value="cancelamento">Cancelamento de Matrícula</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="request-subject">Disciplina (se aplicável)</label>
+                                <select id="request-subject" name="request-subject">
+                                    <option value="">Selecione a disciplina</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="request-description">Descrição</label>
+                                <textarea id="request-description" name="request-description" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="request-attachment">Anexo (opcional)</label>
+                                <input type="file" id="request-attachment" name="request-attachment">
+                            </div>
+                            <button type="submit" class="cta-button">Enviar Requerimento</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção Calendário Acadêmico -->
+            <section id="calendario" class="content-section">
+                <h1>Calendário Acadêmico</h1>
+                
+                <div class="calendar-filter">
+                    <label for="calendar-period">Período:</label>
+                    <select id="calendar-period">
+                        <option value="2024.2">2024.2</option>
+                        <option value="2024.1">2024.1</option>
+                    </select>
+                </div>
+                
+                <div class="calendar-container" id="academic-calendar">
+                    <p class="loading-message">Carregando calendário...</p>
+                </div>
+            </section>
+            
+            <!-- Seção Meu Perfil -->
+            <section id="perfil" class="content-section">
+                <h1>Meu Perfil</h1>
+                
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="/placeholder.svg?height=150&width=150" alt="Foto do Aluno" id="profile-avatar-img">
+                            <button class="change-avatar-btn">Alterar Foto</button>
+                        </div>
+                        <div class="profile-summary">
+                            <h2 id="profile-student-name">Carregando...</h2>
+                            <p id="profile-student-ra">RA: Carregando...</p>
+                            <p id="profile-student-course">Carregando...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-form">
+                        <h3>Dados Pessoais</h3>
+                        <form id="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-name">Nome Completo</label>
+                                    <input type="text" id="profile-name" name="name" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-cpf">CPF</label>
+                                    <input type="text" id="profile-cpf" name="cpf" readonly>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-birth">Data de Nascimento</label>
+                                    <input type="date" id="profile-birth" name="birth" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-gender">Gênero</label>
+                                    <select id="profile-gender" name="gender" disabled>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Feminino</option>
+                                        <option value="O">Outro</option>
+                                        <option value="N">Prefiro não informar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <h3>Contato</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-email">E-mail</label>
+                                    <input type="email" id="profile-email" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-phone">Telefone</label>
+                                    <input type="tel" id="profile-phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <h3>Endereço</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-cep">CEP</label>
+                                    <input type="text" id="profile-cep" name="cep">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-address">Endereço</label>
+                                    <input type="text" id="profile-address" name="address">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-number">Número</label>
+                                    <input type="text" id="profile-number" name="number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-complement">Complemento</label>
+                                    <input type="text" id="profile-complement" name="complement">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-neighborhood">Bairro</label>
+                                    <input type="text" id="profile-neighborhood" name="neighborhood">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-city">Cidade</label>
+                                    <input type="text" id="profile-city" name="city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-state">Estado</label>
+                                    <input type="text" id="profile-state" name="state">
+                                </div>
+                            </div>
+                            
+                            <h3>Segurança</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-current-password">Senha Atual</label>
+                                    <input type="password" id="profile-current-password" name="current-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-new-password">Nova Senha</label>
+                                    <input type="password" id="profile-new-password" name="new-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-confirm-password">Confirmar Nova Senha</label>
+                                    <input type="password" id="profile-confirm-password" name="confirm-password">
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="cta-button">Salvar Alterações</button>
+                                <button type="reset" class="secondary-button">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Rodapé (mesmo do index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('sobre.html')">Sobre o Senac</a></li>
+                    <li><a href="#" onclick="navigateTo('trabalhe-conosco.html')">Trabalhe Conosco</a></li>
+                    <li><a href="#" onclick="navigateTo('responsabilidade-social.html')">Responsabilidade Social</a></li>
+                    <li><a href="#" onclick="navigateTo('noticias.html')">Notícias</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Cursos</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a></li>
+                    <li><a href="#" onclick="openLoginModal()">Portal do Aluno</a></li>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a></li>
+                    <li><a href="#" onclick="navigateTo('bolsas.html')">Bolsas e Financiamentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Central de Atendimento: 0800 883 2000</li>
+                    <li>atendimento@sp.senac.br</li>
+                    <li>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">FB</a>
+                            <a href="#" class="social-icon">IG</a>
+                            <a href="#" class="social-icon">YT</a>
+                            <a href="#" class="social-icon">LI</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Senac SP - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Mensagem de notificação -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <span class="close-notification" onclick="closeNotification()">&times;</span>
+    </div>
+</body>
+</html>*/

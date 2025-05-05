@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siga Imóveis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <script src="main.js" defer></script>
+    <!-- Favicon -->
+<link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMd1AAFcDfnAJUooKdc4EzujsY7Y4y3xd5ZQ&s" type="image/png">
+<link rel="apple-touch-icon" href="img/SIGA LOGO.png">
+</head>
+<body>
+    <!-- Barra de navegação (mesma do index.html) -->
+    <nav>
+        <img src="img/SIGA LOGO.png" alt="Senac Logo" onclick="navigateTo('index.html')">
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Cursos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Bolsas de estudo</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('bolsas.html', 'prouni')">ProUni</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'fies')">FIES</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'bolsa-social')">Bolsa Social</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Descontos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('descontos.html', 'convenios')">Convênios</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'promocoes')">Promoções</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'ex-alunos')">Ex-alunos</a>
+                </div>
+            </div>
+            <a href="#" onclick="navigateTo('eventos.html')">Eventos</a>
+            <a href="#" onclick="navigateTo('unidades.html')">Unidades</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Para empresas</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('empresas.html', 'in-company')">Cursos In Company</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'parcerias')">Parcerias</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'estagio')">Programa de Estágio</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">O Senac</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('sobre.html', 'historia')">História</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'missao')">Missão e Valores</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'estrutura')">Estrutura</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Serviços</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'atendimento')">Atendimento</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a>
+                </div>
+            </div>
+            <input type="text" placeholder="Buscar" id="search-input">
+            <button onclick="openLoginModal()">Login / Área Exclusiva</button>
+        </div>
+    </nav>
+    
+    <!-- Modal de Login (mesmo do index.html) -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <h2>Login / Área Exclusiva</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </div>
+                <button type="submit" class="login-button">Entrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Não tem uma conta? <a href="#" onclick="showRegistrationForm()">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Formulário de Cadastro (mesmo do index.html) -->
+    <div id="registration-form" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+            <h2>Cadastre-se</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-name">Nome Completo</label>
+                    <input type="text" id="reg-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-cpf">CPF</label>
+                    <input type="text" id="reg-cpf" name="cpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-phone">Telefone</label>
+                    <input type="tel" id="reg-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Senha</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirmar Senha</label>
+                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
+                </div>
+                <div class="form-options">
+                    <div class="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                    </div>
+                </div>
+                <button type="submit" class="register-button">Cadastrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Conteúdo da página de bolsas -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1>Bolsas de Estudo</h1>
+            <p>Conheça as opções de bolsas e financiamentos para realizar seu sonho de estudar no Senac</p>
+        </div>
+    </div>
+    
+    <div class="page-content">
+        <!-- Menu lateral de bolsas -->
+        <div class="sidebar">
+            <h2>Programas</h2>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#prouni">ProUni</a></li>
+                <li><a href="#fies">FIES</a></li>
+                <li><a href="#bolsa-social">Bolsa Social Senac</a></li>
+                <li><a href="#educa-mais">Educa Mais Brasil</a></li>
+                <li><a href="#quero-bolsa">Quero Bolsa</a></li>
+                <li><a href="#financiamento">Financiamento Próprio</a></li>
+            </ul>
+            
+            <div class="sidebar-cta">
+                <h3>Precisa de ajuda?</h3>
+                <p>Nossa equipe está pronta para esclarecer suas dúvidas sobre bolsas e financiamentos.</p>
+                <button class="cta-button" onclick="navigateTo('contato.html')">Fale Conosco</button>
+            </div>
+        </div>
+        
+        <!-- Conteúdo principal -->
+        <div class="main-content">
+            <section id="prouni" class="scholarship-section">
+                <h2>ProUni - Programa Universidade para Todos</h2>
+                <div class="scholarship-info">
+                    <div class="scholarship-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="ProUni">
+                    </div>
+                    <div class="scholarship-details">
+                        <p>O Programa Universidade para Todos (ProUni) é uma iniciativa do Governo Federal que oferece bolsas de estudo integrais e parciais em instituições privadas de ensino superior.</p>
+                        
+                        <h3>Requisitos:</h3>
+                        <ul>
+                            <li>Ter realizado o Enem mais recente e obtido média mínima de 450 pontos</li>
+                            <li>Não ter zerado a redação</li>
+                            <li>Possuir renda familiar per capita de até 1,5 salário mínimo (bolsa integral) ou até 3 salários mínimos (bolsa parcial)</li>
+                            <li>Ter cursado o ensino médio completo em escola pública ou como bolsista integral em escola particular</li>
+                        </ul>
+                        
+                        <h3>Benefícios:</h3>
+                        <ul>
+                            <li>Bolsas integrais (100%) ou parciais (50%)</li>
+                            <li>Não é necessário restituir os valores</li>
+                            <li>Processo seletivo simplificado utilizando a nota do Enem</li>
+                        </ul>
+                        
+                        <div class="scholarship-actions">
+                            <button class="cta-button" onclick="window.open('https://acessounico.mec.gov.br/prouni', '_blank')">Site Oficial do ProUni</button>
+                            <button class="secondary-button" onclick="navigateTo('contato.html')">Tirar Dúvidas</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="fies" class="scholarship-section">
+                <h2>FIES - Financiamento Estudantil</h2>
+                <div class="scholarship-info">
+                    <div class="scholarship-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="FIES">
+                    </div>
+                    <div class="scholarship-details">
+                        <p>O Fundo de Financiamento Estudantil (FIES) é um programa do Ministério da Educação que financia cursos de graduação em instituições privadas a juros reduzidos.</p>
+                        
+                        <h3>Requisitos:</h3>
+                        <ul>
+                            <li>Ter realizado o Enem a partir de 2010 e obtido média mínima de 450 pontos</li>
+                            <li>Não ter zerado a redação</li>
+                            <li>Possuir renda familiar per capita de até 3 salários mínimos</li>
+                            <li>Estar matriculado em um curso com avaliação positiva no MEC</li>
+                        </ul>
+                        
+                        <h3>Condições:</h3>
+                        <ul>
+                            <li>Financiamento de até 100% do curso</li>
+                            <li>Juros reduzidos</li>
+                            <li>Pagamento após a conclusão do curso</li>
+                            <li>Prazo de carência de 18 meses após a formatura</li>
+                        </ul>
+                        
+                        <div class="scholarship-actions">
+                            <button class="cta-button" onclick="window.open('https://acessounico.mec.gov.br/fies', '_blank')">Site Oficial do FIES</button>
+                            <button class="secondary-button" onclick="navigateTo('contato.html')">Tirar Dúvidas</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="bolsa-social" class="scholarship-section">
+                <h2>Bolsa Social Senac</h2>
+                <div class="scholarship-info">
+                    <div class="scholarship-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Bolsa Social Senac">
+                    </div>
+                    <div class="scholarship-details">
+                        <p>O Programa de Bolsa Social do Senac oferece bolsas de estudo parciais e integrais para candidatos de baixa renda, como parte do compromisso social da instituição.</p>
+                        
+                        <h3>Requisitos:</h3>
+                        <ul>
+                            <li>Comprovar renda familiar per capita de até 1,5 salário mínimo (bolsa integral) ou até 3 salários mínimos (bolsa parcial)</li>
+                            <li>Participar do processo seletivo específico</li>
+                            <li>Não possuir diploma de curso superior (para cursos de graduação)</li>
+                        </ul>
+                        
+                        <h3>Benefícios:</h3>
+                        <ul>
+                            <li>Bolsas integrais (100%) ou parciais (50%)</li>
+                            <li>Disponível para cursos técnicos, graduação e pós-graduação</li>
+                            <li>Processo seletivo próprio, sem necessidade de nota do Enem</li>
+                        </ul>
+                        
+                        <div class="scholarship-actions">
+                            <button class="cta-button" onclick="openRegistrationModal()">Inscreva-se</button>
+                            <button class="secondary-button" onclick="navigateTo('contato.html')">Tirar Dúvidas</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Rodapé (mesmo do index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('sobre.html')">Sobre o Senac</a></li>
+                    <li><a href="#" onclick="navigateTo('trabalhe-conosco.html')">Trabalhe Conosco</a></li>
+                    <li><a href="#" onclick="navigateTo('responsabilidade-social.html')">Responsabilidade Social</a></li>
+                    <li><a href="#" onclick="navigateTo('noticias.html')">Notícias</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Cursos</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a></li>
+                    <li><a href="#" onclick="openLoginModal()">Portal do Aluno</a></li>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a></li>
+                    <li><a href="#" onclick="navigateTo('bolsas.html')">Bolsas e Financiamentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Central de Atendimento: 0800 883 2000</li>
+                    <li>atendimento@sp.senac.br</li>
+                    <li>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">FB</a>
+                            <a href="#" class="social-icon">IG</a>
+                            <a href="#" class="social-icon">YT</a>
+                            <a href="#" class="social-icon">LI</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Senac SP - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Mensagem de notificação -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <span class="close-notification" onclick="closeNotification()">&times;</span>
+    </div>
+</body>
+</html>

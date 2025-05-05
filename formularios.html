@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha Cadastral | Siga Imóveis Sob Medida</title>
+    <link rel="stylesheet" href="formularios.css">
+    <script src="formulario.js" defer></script>
+    <!-- Favicon -->
+    <link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+    <link rel="shortcut icon" href="img/SIGA LOGO.png" type="image/png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="img/SIGA LOGO.png" alt="Siga Imóveis Logo" onclick="window.location.href='index.html'">
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="imoveis.html">Imóveis</a>
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+                <a href="formulario.html" class="active">Cadastro de Interesse</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <h1 class="form-title">FICHA CADASTRAL PARA LOCAÇÃO DE IMÓVEL / LOCATÁRIO PESSOA FÍSICA</h1>
+        
+        <div class="form-layout">
+            <!-- Coluna esquerda - Formulário -->
+            <div class="form-column">
+                <form id="interestForm" enctype="multipart/form-data">
+                    <!-- Imóvel de Interesse -->
+                    <div class="form-section">
+                        <h2>IMÓVEL DE INTERESSE</h2>
+                        
+                        <div class="form-group">
+                            <label for="imovelEndereco">ENDEREÇO:</label>
+                            <input type="text" id="imovelEndereco" name="imovelEndereco" required>
+                            <span class="required-field">This field is required</span>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="imovelBairro">BAIRRO:</label>
+                                <input type="text" id="imovelBairro" name="imovelBairro" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="imovelCidade">CIDADE/UF:</label>
+                                <input type="text" id="imovelCidade" name="imovelCidade" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Informações Pessoais -->
+                    <div class="form-section">
+                        <h2>INFORMAÇÕES PESSOAIS</h2>
+                        
+                        <div class="form-group">
+                            <label for="nome">NOME:</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">EMAIL:</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="required-field">This field is required</span>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dataNascimento">DATA NASCIMENTO:</label>
+                                <input type="date" id="dataNascimento" name="dataNascimento" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profissao">PROFISSÃO:</label>
+                                <input type="text" id="profissao" name="profissao" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="estadoCivil">ESTADO CIVIL:</label>
+                                <select id="estadoCivil" name="estadoCivil" required onchange="toggleRegimeCasamento()">
+                                    <option value="">Selecione</option>
+                                    <option value="solteiro">Solteiro(a)</option>
+                                    <option value="casado">Casado(a)</option>
+                                    <option value="divorciado">Divorciado(a)</option>
+                                    <option value="viuvo">Viúvo(a)</option>
+                                    <option value="uniao_estavel">União Estável</option>
+                                </select>
+                                <span class="required-field">This field is required</span>
+                            </div>
+                            
+                            <div class="form-group" id="regimeCasamentoGroup">
+                                <label for="regimeCasamento">REGIME DE CASAMENTO:</label>
+                                <select id="regimeCasamento" name="regimeCasamento">
+                                    <option value="">Selecione</option>
+                                    <option value="comunhao_parcial">Comunhão Parcial de Bens</option>
+                                    <option value="comunhao_universal">Comunhão Universal de Bens</option>
+                                    <option value="separacao_total">Separação Total de Bens</option>
+                                    <option value="participacao_final">Participação Final nos Aquestos</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rg">Nº RG:</label>
+                                <input type="text" id="rg" name="rg" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cpf">Nº CPF/MF:</label>
+                                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="enderecoResidencial">ENDEREÇO RESIDENCIAL:</label>
+                            <input type="text" id="enderecoResidencial" name="enderecoResidencial" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bairroResidencial">BAIRRO:</label>
+                            <input type="text" id="bairroResidencial" name="bairroResidencial" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone">TELEFONE:</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pessoasImovel">PESSOAS QUE IRÃO MORAR NO IMÓVEL:</label>
+                            <input type="number" id="pessoasImovel" name="pessoasImovel" min="1" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Informações Profissionais -->
+                    <div class="form-section">
+                        <h2>INFORMAÇÕES PROFISSIONAIS</h2>
+                        
+                        <div class="form-group">
+                            <label for="empresa">EMPRESA ONDE TRABALHA:</label>
+                            <input type="text" id="empresa" name="empresa" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tempoEmpresa">QUANTO TEMPO:</label>
+                                <input type="text" id="tempoEmpresa" name="tempoEmpresa" placeholder="Ex: 2 anos e 3 meses" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefoneEmpresa">TELEFONE:</label>
+                                <input type="tel" id="telefoneEmpresa" name="telefoneEmpresa" placeholder="(00) 0000-0000" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="enderecoEmpresa">ENDEREÇO:</label>
+                            <input type="text" id="enderecoEmpresa" name="enderecoEmpresa" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cargo">CARGO/FUNÇÃO:</label>
+                                <input type="text" id="cargo" name="cargo" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="salario">SALÁRIO/RETIRADA:</label>
+                                <input type="text" id="salario" name="salario" placeholder="R$ 0.000,00" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cônjuge -->
+                    <div class="form-section">
+                        <h2>CÔNJUGE</h2>
+                        
+                        <div class="form-group">
+                            <label for="nomeConjuge">NOME DO CÔNJUGE:</label>
+                            <input type="text" id="nomeConjuge" name="nomeConjuge">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dataNascimentoConjuge">DATA DE NASCIMENTO:</label>
+                                <input type="date" id="dataNascimentoConjuge" name="dataNascimentoConjuge">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profissaoConjuge">PROFISSÃO:</label>
+                                <input type="text" id="profissaoConjuge" name="profissaoConjuge">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rgConjuge">Nº RG:</label>
+                                <input type="text" id="rgConjuge" name="rgConjuge">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cpfConjuge">Nº CPF/MF:</label>
+                                <input type="text" id="cpfConjuge" name="cpfConjuge" placeholder="000.000.000-00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="empresaConjuge">EMPRESA ONDE TRABALHA:</label>
+                            <input type="text" id="empresaConjuge" name="empresaConjuge">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cargoConjuge">CARGO:</label>
+                            <input type="text" id="cargoConjuge" name="cargoConjuge">
+                        </div>
+                    </div>
+                    
+                    <!-- Locação Atual -->
+                    <div class="form-section">
+                        <h2>LOCAÇÃO ATUAL</h2>
+                        
+                        <div class="form-group">
+                            <label for="nomeLocador">NOME DO LOCADOR ATUAL:</label>
+                            <input type="text" id="nomeLocador" name="nomeLocador" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="valorAluguel">VALOR DO ALUGUEL:</label>
+                                <input type="text" id="valorAluguel" name="valorAluguel" placeholder="R$ 0.000,00" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefoneLocador">TELEFONE LOCADOR/IMOBILIÁRIA:</label>
+                                <input type="tel" id="telefoneLocador" name="telefoneLocador" placeholder="(00) 0000-0000" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivoMudanca">MOTIVO DA MUDANÇA:</label>
+                            <textarea id="motivoMudanca" name="motivoMudanca" rows="3" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Referências Bancárias -->
+                    <div class="form-section">
+                        <h2>REFERÊNCIAS BANCÁRIAS</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="banco">BANCO:</label>
+                                <input type="text" id="banco" name="banco" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="agencia">AGÊNCIA:</label>
+                                <input type="text" id="agencia" name="agencia" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contaCorrente">CONTA CORRENTE:</label>
+                                <input type="text" id="contaCorrente" name="contaCorrente" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefoneBanco">TELEFONE:</label>
+                                <input type="tel" id="telefoneBanco" name="telefoneBanco" placeholder="(00) 0000-0000" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="clienteDesde">CLIENTE DESDE:</label>
+                            <input type="text" id="clienteDesde" name="clienteDesde" placeholder="Ex: Janeiro de 2018" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Upload de Documentos -->
+                    <div class="form-section">
+                        <h2>UPLOAD DE DOCUMENTOS</h2>
+                        
+                        <div class="document-upload-container">
+                            <div class="document-item">
+                                <label for="docIdentidade">
+                                    <div class="upload-box" id="uploadBoxIdentidade">
+                                        <div class="upload-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                        </div>
+                                        <div class="upload-text">
+                                            <span>RG/CNH (frente e verso)</span>
+                                            <small>Clique para selecionar</small>
+                                        </div>
+                                    </div>
+                                    <input type="file" id="docIdentidade" name="docIdentidade" accept=".pdf,.jpg,.jpeg,.png" required hidden>
+                                </label>
+                                <div class="file-info" id="fileInfoIdentidade"></div>
+                            </div>
+                            
+                            <div class="document-item">
+                                <label for="docComprovante">
+                                    <div class="upload-box" id="uploadBoxComprovante">
+                                        <div class="upload-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                        </div>
+                                        <div class="upload-text">
+                                            <span>Comprovante de Residência</span>
+                                            <small>Clique para selecionar</small>
+                                        </div>
+                                    </div>
+                                    <input type="file" id="docComprovante" name="docComprovante" accept=".pdf,.jpg,.jpeg,.png" required hidden>
+                                </label>
+                                <div class="file-info" id="fileInfoComprovante"></div>
+                            </div>
+                            
+                            <div class="document-item">
+                                <label for="docRenda">
+                                    <div class="upload-box" id="uploadBoxRenda">
+                                        <div class="upload-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                        </div>
+                                        <div class="upload-text">
+                                            <span>Comprovante de Renda</span>
+                                            <small>Clique para selecionar</small>
+                                        </div>
+                                    </div>
+                                    <input type="file" id="docRenda" name="docRenda" accept=".pdf,.jpg,.jpeg,.png" required hidden>
+                                </label>
+                                <div class="file-info" id="fileInfoRenda"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="termsAccept" name="termsAccept" required>
+                            <label for="termsAccept">Declaro que as informações fornecidas são verdadeiras e autorizo a consulta aos órgãos de proteção ao crédito.</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Enviar Formulário</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Coluna direita - Relação de Documentos -->
+            <div class="docs-column">
+                <div class="docs-section">
+                    <h2>RELAÇÃO DE DOCUMENTOS</h2>
+                    
+                    <p class="docs-note">Obs: Os documentos abaixo relacionados deverão ser apresentados em cópias autenticadas ou digitalizados nos originais e encaminhados por e-mail.</p>
+                    
+                    <ul class="docs-list">
+                        <li>Documento de identidade (CNH ou RG e CPF);</li>
+                        <li>Certidão de casamento;</li>
+                        <li>Comprovante de endereço;</li>
+                    </ul>
+                    
+                    <h3>DECLARAÇÃO DE RENDIMENTOS (OBSERVAR AS OPÇÕES ABAIXO)</h3>
+                    
+                    <h4>EMPREGADO ASSALARIADO</h4>
+                    <ul class="docs-list">
+                        <li>Carteira profissional (identificação e contrato de admissão);</li>
+                        <li>3 últimos comprovantes de salário;</li>
+                        <li>Declaração de imposto de renda atualizada com recibo de entrega à receita federal;</li>
+                    </ul>
+                    
+                    <h4>EMPREGADOR</h4>
+                    <ul class="docs-list">
+                        <li>Contrato social consolidado e última alteração;</li>
+                        <li>Cartão do CNPJ;</li>
+                        <li>Últimos três recibos de pró-labore com firma reconhecida do contador responsável pelas informações;</li>
+                        <li>Declaração de imposto de renda atualizada com recibo de entrega à receita federal.</li>
+                    </ul>
+                    
+                    <h4>AUTÔNOMO/PROFISSIONAL LIBERAL</h4>
+                    <ul class="docs-list">
+                        <li>Inscrição na prefeitura;</li>
+                        <li>Comprovante de pagamento do ISS dos 3 últimos meses;</li>
+                        <li>Declaração de imposto de renda atualizada com recibo de entrega à receita federal;</li>
+                        <li>Extratos bancários dos últimos 3 meses.</li>
+                    </ul>
+                    
+                    <h4>APOSENTADO/PENSIONISTA</h4>
+                    <ul class="docs-list">
+                        <li>Comprovante de recebimento da aposentadoria ou pensão;</li>
+                        <li>Declaração de imposto de renda atualizada com recibo de entrega à receita federal;</li>
+                        <li>Extratos bancários dos últimos 3 meses.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siga Imóveis Sob Medida</h3>
+                <p>Encontre o imóvel dos seus sonhos com a nossa assessoria especializada.</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">YT</a>
+                    <a href="#" class="social-icon">LI</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Telefone: (11) 9999-9999</li>
+                    <li>Email: contato@sigaimoveis.com.br</li>
+                    <li>Endereço: Av. Paulista, 1000 - São Paulo/SP</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Siga Imóveis Sob Medida - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Mensagem de notificação -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <span class="close-notification" onclick="closeNotification()">&times;</span>
+    </div>
+</body>
+</html>

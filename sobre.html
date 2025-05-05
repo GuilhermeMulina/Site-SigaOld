@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre o Senac - Senac</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="main.js" defer></script>
+  <!-- Favicon -->
+<link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMd1AAFcDfnAJUooKdc4EzujsY7Y4y3xd5ZQ&s" type="image/png">
+<link rel="apple-touch-icon" href="img/SIGA LOGO.png">
+</head>
+<body>
+  <!-- Barra de navegação (mesma do index.html) -->
+  <nav>
+      <img src="img/SIGA LOGO.png" alt="Senac Logo" onclick="navigateTo('index.html')">
+      <div class="nav-links">
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Cursos</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a>
+                  <a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a>
+                  <a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a>
+                  <a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Bolsas de estudo</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('bolsas.html', 'prouni')">ProUni</a>
+                  <a href="#" onclick="navigateTo('bolsas.html', 'fies')">FIES</a>
+                  <a href="#" onclick="navigateTo('bolsas.html', 'bolsa-social')">Bolsa Social</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Descontos</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('descontos.html', 'convenios')">Convênios</a>
+                  <a href="#" onclick="navigateTo('descontos.html', 'promocoes')">Promoções</a>
+                  <a href="#" onclick="navigateTo('descontos.html', 'ex-alunos')">Ex-alunos</a>
+              </div>
+          </div>
+          <a href="#" onclick="navigateTo('eventos.html')">Eventos</a>
+          <a href="#" onclick="navigateTo('unidades.html')">Unidades</a>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Para empresas</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('empresas.html', 'in-company')">Cursos In Company</a>
+                  <a href="#" onclick="navigateTo('empresas.html', 'parcerias')">Parcerias</a>
+                  <a href="#" onclick="navigateTo('empresas.html', 'estagio')">Programa de Estágio</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">O Senac</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('sobre.html', 'historia')">História</a>
+                  <a href="#" onclick="navigateTo('sobre.html', 'missao')">Missão e Valores</a>
+                  <a href="#" onclick="navigateTo('sobre.html', 'estrutura')">Estrutura</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <a href="#" class="dropdown-toggle">Serviços</a>
+              <div class="dropdown-menu">
+                  <a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a>
+                  <a href="#" onclick="navigateTo('servicos.html', 'atendimento')">Atendimento</a>
+                  <a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a>
+              </div>
+          </div>
+          <input type="text" placeholder="Buscar" id="search-input">
+          <button onclick="openLoginModal()">Login / Área Exclusiva</button>
+      </div>
+  </nav>
+  
+  <!-- Modal de Login (mesmo do index.html) -->
+  <div id="login-modal" class="modal">
+      <div class="modal-content">
+          <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+          <h2>Login / Área Exclusiva</h2>
+          <form id="login-form">
+              <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="password">Senha</label>
+                  <input type="password" id="password" name="password" required>
+              </div>
+              <div class="form-options">
+                  <div class="remember-me">
+                      <input type="checkbox" id="remember" name="remember">
+                      <label for="remember">Lembrar-me</label>
+                  </div>
+                  <a href="#" class="forgot-password">Esqueci minha senha</a>
+              </div>
+              <button type="submit" class="login-button">Entrar</button>
+          </form>
+          <div class="login-footer">
+              <p>Não tem uma conta? <a href="#" onclick="showRegistrationForm()">Cadastre-se</a></p>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Formulário de Cadastro (mesmo do index.html) -->
+  <div id="registration-form" class="modal">
+      <div class="modal-content">
+          <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+          <h2>Cadastre-se</h2>
+          <form id="register-form">
+              <div class="form-group">
+                  <label for="reg-name">Nome Completo</label>
+                  <input type="text" id="reg-name" name="name" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-email">E-mail</label>
+                  <input type="email" id="reg-email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-cpf">CPF</label>
+                  <input type="text" id="reg-cpf" name="cpf" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-phone">Telefone</label>
+                  <input type="tel" id="reg-phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-password">Senha</label>
+                  <input type="password" id="reg-password" name="password" required>
+              </div>
+              <div class="form-group">
+                  <label for="reg-confirm-password">Confirmar Senha</label>
+                  <input type="password" id="reg-confirm-password" name="confirm-password" required>
+              </div>
+              <div class="form-options">
+                  <div class="terms">
+                      <input type="checkbox" id="terms" name="terms" required>
+                      <label for="terms">Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                  </div>
+              </div>
+              <button type="submit" class="register-button">Cadastrar</button>
+          </form>
+          <div class="login-footer">
+              <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a></p>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Conteúdo da página sobre o Senac -->
+  <div class="page-header">
+      <div class="page-header-content">
+          <h1>Sobre o Senac</h1>
+          <p>Conheça nossa história, missão e valores que guiam nossa atuação na educação profissional</p>
+      </div>
+  </div>
+  
+  <div class="page-content">
+      <!-- Menu lateral -->
+      <div class="sidebar">
+          <h2>Navegação</h2>
+          <ul class="sidebar-menu">
+              <li class="active"><a href="#historia">História</a></li>
+              <li><a href="#missao">Missão e Valores</a></li>
+              <li><a href="#estrutura">Estrutura</a></li>
+              <li><a href="#diferenciais">Diferenciais</a></li>
+              <li><a href="#responsabilidade">Responsabilidade Social</a></li>
+              <li><a href="#premios">Prêmios e Reconhecimentos</a></li>
+          </ul>
+      </div>
+      
+      <!-- Conteúdo principal -->
+      <div class="main-content">
+          <section id="historia" class="content-section">
+              <h2>Nossa História</h2>
+              <div class="section-image">
+                  <img src="/placeholder.svg?height=300&width=600" alt="História do Senac">
+              </div>
+              <p>O Serviço Nacional de Aprendizagem Comercial (Senac) foi criado em 10 de janeiro de 1946, pelo Decreto-Lei nº 8.621, com o objetivo de qualificar profissionais para o setor do comércio de bens, serviços e turismo.</p>
+              
+              <p>Ao longo de mais de 75 anos de atuação, o Senac se consolidou como a principal instituição de educação profissional do país, formando milhões de brasileiros para o mercado de trabalho e contribuindo para o desenvolvimento socioeconômico do Brasil.</p>
+              
+              <div class="timeline">
+                  <div class="timeline-item">
+                      <div class="timeline-date">1946</div>
+                      <div class="timeline-content">
+                          <h4>Fundação do Senac</h4>
+                          <p>Criação do Senac pelo Decreto-Lei nº 8.621, assinado pelo presidente Eurico Gaspar Dutra.</p>
+                      </div>
+                  </div>
+                  <div class="timeline-item">
+                      <div class="timeline-date">1947</div>
+                      <div class="timeline-content">
+                          <h4>Primeiras Unidades</h4>
+                          <p>Inauguração das primeiras escolas do Senac em São Paulo, Rio de Janeiro e outras capitais.</p>
+                      </div>
+                  </div>
+                  <div class="timeline-item">
+                      <div class="timeline-date">1960</div>
+                      <div class="timeline-content">
+                          <h4>Expansão Nacional</h4>
+                          <p>Consolidação da presença do Senac em todos os estados brasileiros.</p>
+                      </div>
+                  </div>
+                  <div class="timeline-item">
+                      <div class="timeline-date">1989</div>
+                      <div class="timeline-content">
+                          <h4>Ensino Superior</h4>
+                          <p>Início da oferta de cursos de graduação, com a criação das Faculdades Senac.</p>
+                      </div>
+                  </div>
+                  <div class="timeline-item">
+                      <div class="timeline-date">2000</div>
+                      <div class="timeline-content">
+                          <h4>Educação a Distância</h4>
+                          <p>Lançamento da Rede Nacional de Educação a Distância, democratizando o acesso à educação profissional.</p>
+                      </div>
+                  </div>
+                  <div class="timeline-item">
+                      <div class="timeline-date">2010</div>
+                      <div class="timeline-content">
+                          <h4>Modelo Pedagógico</h4>
+                          <p>Implementação do Modelo Pedagógico Senac, baseado no desenvolvimento de competências.</p>
+                      </div>
+                  </div>
+                  <div class="timeline-item">
+                      <div class="timeline-date">2020</div>
+                      <div class="timeline-content">
+                          <h4>Transformação Digital</h4>
+                          <p>Aceleração da transformação digital e ampliação da oferta de cursos híbridos e online.</p>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="missao" class="content-section">
+              <h2>Missão e Valores</h2>
+              
+              <div class="mission-box">
+                  <h3>Missão</h3>
+                  <p>Educar para o trabalho em atividades do comércio de bens, serviços e turismo, contribuindo para o desenvolvimento do país.</p>
+              </div>
+              
+              <div class="vision-box">
+                  <h3>Visão</h3>
+                  <p>Ser reconhecida como a melhor instituição de educação profissional do Brasil, gerando valor para os clientes, a sociedade e o Sistema Comércio.</p>
+              </div>
+              
+              <h3>Valores</h3>
+              <div class="values-grid">
+                  <div class="value-item">
+                      <div class="value-icon">🎯</div>
+                      <h4>Excelência</h4>
+                      <p>Busca contínua por altos padrões de qualidade em todas as nossas ações.</p>
+                  </div>
+                  <div class="value-item">
+                      <div class="value-icon">🔄</div>
+                      <h4>Inovação</h4>
+                      <p>Promoção de um ambiente criativo e aberto a novas ideias e soluções.</p>
+                  </div>
+                  <div class="value-item">
+                      <div class="value-icon">🤝</div>
+                      <h4>Colaboração</h4>
+                      <p>Trabalho em equipe e construção de parcerias para alcançar objetivos comuns.</p>
+                  </div>
+                  <div class="value-item">
+                      <div class="value-icon">⚖️</div>
+                      <h4>Ética</h4>
+                      <p>Atuação baseada em princípios de integridade, transparência e respeito.</p>
+                  </div>
+                  <div class="value-item">
+                      <div class="value-icon">🌱</div>
+                      <h4>Sustentabilidade</h4>
+                      <p>Compromisso com o desenvolvimento econômico, social e ambiental.</p>
+                  </div>
+                  <div class="value-item">
+                      <div class="value-icon">🔍</div>
+                      <h4>Transparência</h4>
+                      <p>Clareza e acessibilidade nas informações e processos institucionais.</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="estrutura" class="content-section">
+              <h2>Estrutura</h2>
+              <div class="section-image">
+                  <img src="/placeholder.svg?height=300&width=600" alt="Estrutura do Senac">
+              </div>
+              <p>O Senac está presente em todos os estados brasileiros, com uma rede de unidades educacionais que oferecem cursos presenciais, a distância e híbridos, atendendo às necessidades de formação profissional em diversas áreas.</p>
+              
+              <h3>Números</h3>
+              <div class="stats-grid">
+                  <div class="stat-item">
+                      <div class="stat-number">600+</div>
+                      <div class="stat-label">Unidades Educacionais</div>
+                  </div>
+                  <div class="stat-item">
+                      <div class="stat-number">27</div>
+                      <div class="stat-label">Departamentos Regionais</div>
+                  </div>
+                  <div class="stat-item">
+                      <div class="stat-number">3.000+</div>
+                      <div class="stat-label">Cursos Oferecidos</div>
+                  </div>
+                  <div class="stat-item">
+                      <div class="stat-number">1.5M+</div>
+                      <div class="stat-label">Alunos por Ano</div>
+                  </div>
+              </div>
+              
+              <h3>Organização</h3>
+              <p>O Senac é administrado pela Confederação Nacional do Comércio de Bens, Serviços e Turismo (CNC) e possui a seguinte estrutura organizacional:</p>
+              
+              <ul class="feature-list">
+                  <li><strong>Administração Nacional:</strong> Composta pelo Conselho Nacional e pelo Departamento Nacional, responsáveis pela coordenação e normatização das políticas institucionais.</li>
+                  <li><strong>Administrações Regionais:</strong> Formadas pelos Conselhos Regionais e Departamentos Regionais, que executam as ações educacionais nos estados.</li>
+                  <li><strong>Unidades Educacionais:</strong> Escolas, faculdades, centros especializados e unidades móveis que oferecem os cursos e programas educacionais.</li>
+              </ul>
+              
+              <h3>Infraestrutura</h3>
+              <p>As unidades do Senac contam com infraestrutura moderna e adequada às necessidades de formação profissional:</p>
+              
+              <div class="facilities-grid">
+                  <div class="facility-item">
+                      <div class="facility-icon">💻</div>
+                      <h4>Laboratórios de Informática</h4>
+                  </div>
+                  <div class="facility-item">
+                      <div class="facility-icon">🔬</div>
+                      <h4>Laboratórios Técnicos</h4>
+                  </div>
+                  <div class="facility-item">
+                      <div class="facility-icon">📚</div>
+                      <h4>Bibliotecas</h4>
+                  </div>
+                  <div class="facility-item">
+                      <div class="facility-icon">🍳</div>
+                      <h4>Cozinhas Pedagógicas</h4>
+                  </div>
+                  <div class="facility-item">
+                      <div class="facility-icon">🏨</div>
+                      <h4>Hotéis-Escola</h4>
+                  </div>
+                  <div class="facility-item">
+                      <div class="facility-icon">🎨</div>
+                      <h4>Estúdios de Design</h4>
+                  </div>
+                  <div class="facility-item">
+                      <div class="facility-icon">💆</div>
+                      <h4>Clínicas-Escola</h4>
+                  </div>
+                  <div class="facility-item">
+                      <div class="facility-icon">🎭</div>
+                      <h4>Auditórios</h4>
+                  </div>
+              </div>
+          </section>
+      </div>
+  </div>
+  
+  <!-- Rodapé (mesmo do index.html) -->
+  <footer>
+      <div class="footer-content">
+          <div class="footer-column">
+              <h3>Institucional</h3>
+              <ul>
+                  <li><a href="#" onclick="navigateTo('sobre.html')">Sobre o Senac</a></li>
+                  <li><a href="#" onclick="navigateTo('trabalhe-conosco.html')">Trabalhe Conosco</a></li>
+                  <li><a href="#" onclick="navigateTo('responsabilidade-social.html')">Responsabilidade Social</a></li>
+                  <li><a href="#" onclick="navigateTo('noticias.html')">Notícias</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Cursos</h3>
+              <ul>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a></li>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a></li>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a></li>
+                  <li><a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Serviços</h3>
+              <ul>
+                  <li><a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a></li>
+                  <li><a href="#" onclick="openLoginModal()">Portal do Aluno</a></li>
+                  <li><a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a></li>
+                  <li><a href="#" onclick="navigateTo('bolsas.html')">Bolsas e Financiamentos</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h3>Contato</h3>
+              <ul>
+                  <li>Central de Atendimento: 0800 883 2000</li>
+                  <li>atendimento@sp.senac.br</li>
+                  <li>
+                      <div class="social-media">
+                          <a href="#" class="social-icon">FB</a>
+                          <a href="#" class="social-icon">IG</a>
+                          <a href="#" class="social-icon">YT</a>
+                          <a href="#" class="social-icon">LI</a>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2025 Senac SP - Todos os direitos reservados</p>
+      </div>
+  </footer>
+
+  <!-- Mensagem de notificação -->
+  <div id="notification" class="notification">
+      <span id="notification-message"></span>
+      <span class="close-notification" onclick="closeNotification()">&times;</span>
+  </div>
+</body>
+</html>
+

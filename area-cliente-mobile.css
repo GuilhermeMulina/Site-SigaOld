@@ -1,0 +1,157 @@
+/* Estilos específicos para dispositivos móveis na área do aluno */
+
+@media (max-width: 992px) {
+  .student-area {
+    flex-direction: column;
+  }
+
+  .student-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
+  .student-profile {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  .student-avatar {
+    margin: 0 15px 0 0;
+    width: 80px;
+    height: 80px;
+  }
+
+  .student-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .student-menu li {
+    margin-bottom: 0;
+    flex: 1 1 auto;
+    min-width: 150px;
+  }
+
+  .student-menu li a {
+    padding: 10px;
+    justify-content: center;
+  }
+
+  .menu-icon {
+    margin-right: 5px;
+  }
+
+  .dashboard-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .academic-info {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .student-content {
+    padding: 20px 15px;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .financial-details {
+    grid-template-columns: 1fr;
+  }
+
+  .materials-list {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    margin: 0 0 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .grades-table-container {
+    overflow-x: auto;
+  }
+
+  .grades-table {
+    min-width: 800px;
+  }
+
+  .financial-table-container {
+    overflow-x: auto;
+  }
+
+  .financial-table {
+    min-width: 800px;
+  }
+
+  .requests-list {
+    overflow-x: auto;
+  }
+
+  .requests-table {
+    min-width: 800px;
+  }
+
+  .student-menu {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+  }
+
+  .student-menu li {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .student-avatar {
+    margin: 0 0 15px;
+  }
+
+  .dashboard-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card-icon {
+    margin: 0 0 15px;
+  }
+
+  .benefit-item {
+    flex-direction: column;
+  }
+
+  .benefit-number {
+    margin: 0 0 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+}
+

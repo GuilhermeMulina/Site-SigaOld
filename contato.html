@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Senac</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <script src="main.js" defer></script>
+    <!-- Favicon -->
+<link rel="icon" href="img/SIGA LOGO.png" type="image/png">
+<link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMd1AAFcDfnAJUooKdc4EzujsY7Y4y3xd5ZQ&s" type="image/png">
+<link rel="apple-touch-icon" href="img/SIGA LOGO.png">
+</head>
+<body>
+    <!-- Barra de navegação (mesma do index.html) -->
+    <nav>
+        <img src="img/SIGA LOGO.png" alt="Senac Logo" onclick="navigateTo('index.html')">
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Cursos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a>
+                    <a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Bolsas de estudo</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('bolsas.html', 'prouni')">ProUni</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'fies')">FIES</a>
+                    <a href="#" onclick="navigateTo('bolsas.html', 'bolsa-social')">Bolsa Social</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Descontos</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('descontos.html', 'convenios')">Convênios</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'promocoes')">Promoções</a>
+                    <a href="#" onclick="navigateTo('descontos.html', 'ex-alunos')">Ex-alunos</a>
+                </div>
+            </div>
+            <a href="#" onclick="navigateTo('eventos.html')">Eventos</a>
+            <a href="#" onclick="navigateTo('unidades.html')">Unidades</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Para empresas</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('empresas.html', 'in-company')">Cursos In Company</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'parcerias')">Parcerias</a>
+                    <a href="#" onclick="navigateTo('empresas.html', 'estagio')">Programa de Estágio</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">O Senac</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('sobre.html', 'historia')">História</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'missao')">Missão e Valores</a>
+                    <a href="#" onclick="navigateTo('sobre.html', 'estrutura')">Estrutura</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">Serviços</a>
+                <div class="dropdown-menu">
+                    <a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'atendimento')">Atendimento</a>
+                    <a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a>
+                </div>
+            </div>
+            <input type="text" placeholder="Buscar" id="search-input">
+            <button onclick="openLoginModal()">Login / Área Exclusiva</button>
+        </div>
+    </nav>
+    
+    <!-- Modal de Login (mesmo do index.html) -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <h2>Login / Área Exclusiva</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                </div>
+                <button type="submit" class="login-button">Entrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Não tem uma conta? <a href="#" onclick="showRegistrationForm()">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Formulário de Cadastro (mesmo do index.html) -->
+    <div id="registration-form" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeRegistrationModal()">&times;</span>
+            <h2>Cadastre-se</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-name">Nome Completo</label>
+                    <input type="text" id="reg-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-cpf">CPF</label>
+                    <input type="text" id="reg-cpf" name="cpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-phone">Telefone</label>
+                    <input type="tel" id="reg-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Senha</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirmar Senha</label>
+                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
+                </div>
+                <div class="form-options">
+                    <div class="terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a></label>
+                    </div>
+                </div>
+                <button type="submit" class="register-button">Cadastrar</button>
+            </form>
+            <div class="login-footer">
+                <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Faça login</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Conteúdo da página de contato -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1>Fale Conosco</h1>
+            <p>Estamos à disposição para atender suas dúvidas e solicitações</p>
+        </div>
+    </div>
+    
+    <div class="page-content">
+        <div class="contact-container">
+            <!-- Informações de contato -->
+            <div class="contact-info">
+                <h2>Canais de Atendimento</h2>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <img src="/placeholder.svg?height=50&width=50" alt="Ícone Telefone">
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telefone</h3>
+                            <p>Central de Atendimento: 0800 883 2000</p>
+                            <p>Segunda a sexta: 8h às 20h<br>Sábados: 8h às 14h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <img src="/placeholder.svg?height=50&width=50" alt="Ícone E-mail">
+                        </div>
+                        <div class="contact-details">
+                            <h3>E-mail</h3>
+                            <p>atendimento@sp.senac.br</p>
+                            <p>Responderemos em até 48 horas úteis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <img src="/placeholder.svg?height=50&width=50" alt="Ícone Chat">
+                        </div>
+                        <div class="contact-details">
+                            <h3>Chat Online</h3>
+                            <p>Atendimento em tempo real</p>
+                            <p>Segunda a sexta: 8h às 20h</p>
+                            <button class="secondary-button" onclick="showNotification('Chat em desenvolvimento')">Iniciar Chat</button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <img src="/placeholder.svg?height=50&width=50" alt="Ícone WhatsApp">
+                        </div>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <p>(11) 99999-9999</p>
+                            <p>Segunda a sexta: 8h às 20h</p>
+                            <button class="secondary-button" onclick="window.open('https://wa.me/5511999999999', '_blank')">Enviar Mensagem</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-contact">
+                    <h3>Redes Sociais</h3>
+                    <p>Acompanhe o Senac nas redes sociais e fique por dentro das novidades</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-large">FB</a>
+                        <a href="#" class="social-icon-large">IG</a>
+                        <a href="#" class="social-icon-large">YT</a>
+                        <a href="#" class="social-icon-large">LI</a>
+                        <a href="#" class="social-icon-large">TW</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulário de contato -->
+            <div class="contact-form-container">
+                <h2>Envie sua mensagem</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Nome completo</label>
+                        <input type="text" id="contact-name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email">E-mail</label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-phone">Telefone</label>
+                        <input type="tel" id="contact-phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-subject">Assunto</label>
+                        <select id="contact-subject" name="subject" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="informacoes">Informações sobre cursos</option>
+                            <option value="matricula">Matrícula</option>
+                            <option value="bolsas">Bolsas e financiamentos</option>
+                            <option value="ouvidoria">Ouvidoria</option>
+                            <option value="outros">Outros assuntos</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-message">Mensagem</label>
+                        <textarea id="contact-message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="terms">
+                            <input type="checkbox" id="contact-terms" name="terms" required>
+                            <label for="contact-terms">Concordo com a <a href="#">Política de Privacidade</a> e com o tratamento dos meus dados para fins de contato</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">Enviar mensagem</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2>Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Como faço para me matricular em um curso?</div>
+                    <div class="faq-answer">
+                        <p>Para se matricular em um curso do Senac, você pode:</p>
+                        <ul>
+                            <li>Realizar a matrícula online pelo nosso site</li>
+                            <li>Comparecer presencialmente a uma de nossas unidades</li>
+                            <li>Entrar em contato com nossa Central de Atendimento</li>
+                        </ul>
+                        <p>É necessário apresentar documentos pessoais (RG, CPF) e comprovante de escolaridade, conforme requisitos do curso escolhido.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Quais são as formas de pagamento aceitas?</div>
+                    <div class="faq-answer">
+                        <p>O Senac aceita as seguintes formas de pagamento:</p>
+                        <ul>
+                            <li>Cartão de crédito (parcelamento em até 12x)</li>
+                            <li>Cartão de débito</li>
+                            <li>Boleto bancário</li>
+                            <li>Transferência bancária</li>
+                            <li>Financiamentos estudantis (FIES e outros)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Como solicitar um certificado ou diploma?</div>
+                    <div class="faq-answer">
+                        <p>Para solicitar seu certificado ou diploma, você pode:</p>
+                        <ul>
+                            <li>Acessar o Portal do Aluno e fazer a solicitação online</li>
+                            <li>Comparecer à Secretaria da unidade onde realizou o curso</li>
+                            <li>Entrar em contato com nossa Central de Atendimento</li>
+                        </ul>
+                        <p>O prazo para emissão varia conforme o tipo de curso realizado.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Como posso obter bolsas de estudo?</div>
+                    <div class="faq-answer">
+                        <p>O Senac oferece diversas opções de bolsas de estudo:</p>
+                        <ul>
+                            <li>Programa Senac de Gratuidade (PSG)</li>
+                            <li>ProUni (para cursos de graduação)</li>
+                            <li>Bolsas por convênios empresariais</li>
+                            <li>Descontos para ex-alunos</li>
+                        </ul>
+                        <p>Para mais informações, acesse a página de <a href="#" onclick="navigateTo('bolsas.html')">Bolsas de Estudo</a>.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-more">
+                <button class="secondary-button" onclick="navigateTo('faq.html')">Ver todas as perguntas frequentes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé (mesmo do index.html) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('sobre.html')">Sobre o Senac</a></li>
+                    <li><a href="#" onclick="navigateTo('trabalhe-conosco.html')">Trabalhe Conosco</a></li>
+                    <li><a href="#" onclick="navigateTo('responsabilidade-social.html')">Responsabilidade Social</a></li>
+                    <li><a href="#" onclick="navigateTo('noticias.html')">Notícias</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Cursos</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'graduacao')">Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'pos-graduacao')">Pós-Graduação</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'tecnicos')">Técnicos</a></li>
+                    <li><a href="#" onclick="navigateTo('cursos.html', 'livres')">Livres</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'biblioteca')">Biblioteca</a></li>
+                    <li><a href="#" onclick="openLoginModal()">Portal do Aluno</a></li>
+                    <li><a href="#" onclick="navigateTo('servicos.html', 'ouvidoria')">Ouvidoria</a></li>
+                    <li><a href="#" onclick="navigateTo('bolsas.html')">Bolsas e Financiamentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Central de Atendimento: 0800 883 2000</li>
+                    <li>atendimento@sp.senac.br</li>
+                    <li>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">FB</a>
+                            <a href="#" class="social-icon">IG</a>
+                            <a href="#" class="social-icon">YT</a>
+                            <a href="#" class="social-icon">LI</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Senac SP - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Mensagem de notificação -->
+    <div id="notification" class="notification">
+        <span id="notification-message"></span>
+        <span class="close-notification" onclick="closeNotification()">&times;</span>
+    </div>
+</body>
+</html>
+
